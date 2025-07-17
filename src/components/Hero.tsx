@@ -1,129 +1,142 @@
 
-import { ArrowRight, Play, Shield, Zap, Target, Award } from 'lucide-react';
+import { ArrowRight, Play, Shield, Zap, Target, Award, Sparkles, Cpu, Globe, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen bg-background text-foreground overflow-hidden">
-      {/* Subtle background pattern */}
+      {/* Futuristic Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:60px_60px]"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-muted/20 via-transparent to-muted/20"></div>
+        {/* Animated Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary))_1px,transparent_1px)] bg-[size:80px_80px] opacity-10 animate-pulse"></div>
+        
+        {/* Holographic Orbs */}
+        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl float animate-delay-100"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-l from-accent/20 to-primary/20 rounded-full blur-3xl float animate-delay-300"></div>
+        
+        {/* Particle Effects */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-primary rounded-full opacity-30"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animation: `float 4s ease-in-out infinite ${Math.random() * 2}s`
+              }}
+            />
+          ))}
+        </div>
       </div>
       
       <div className="relative container mx-auto px-6 pt-32 pb-20">
         <div className="max-w-7xl mx-auto">
-          {/* Corporate Header */}
-          <div className="text-center mb-16 animate-slide-up">
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-muted/50 border border-border mb-8 animate-fade-in animate-delay-100">
-              <Award className="h-4 w-4 text-primary mr-2" />
-              <span className="text-sm font-medium text-muted-foreground">Elite Consulting Excellence Since 2024</span>
+          {/* Futuristic Header Badge */}
+          <div className="text-center mb-16 slide-up-fade">
+            <div className="inline-flex items-center px-8 py-4 rounded-full glass-morphism neon-border mb-8 scale-fade animate-delay-100">
+              <Sparkles className="h-5 w-5 text-primary mr-3 pulse-glow" />
+              <span className="text-sm font-semibold holographic-text">Next-Generation Consulting Excellence</span>
             </div>
             
-            <h1 className="text-7xl md:text-9xl font-light mb-6 tracking-tighter animate-slide-up animate-delay-200">
-              <span className="font-bold text-primary">
-                NOVA STRATAGEM
+            <h1 className="text-8xl md:text-[12rem] font-black mb-8 tracking-tighter slide-up-fade animate-delay-200">
+              <span className="holographic-text block mb-4">
+                NOVA
+              </span>
+              <span className="text-foreground/90 block">
+                STRATAGEM
               </span>
             </h1>
-            <div className="text-2xl md:text-3xl text-muted-foreground font-light tracking-[0.4em] mb-4 animate-fade-in animate-delay-300">
-              GROUP
+            <div className="text-3xl md:text-4xl text-muted-foreground font-light tracking-[0.6em] mb-6 scale-fade animate-delay-300">
+              FUTURE ENTERPRISE GROUP
             </div>
-            <div className="w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto animate-scale-in animate-delay-400"></div>
+            <div className="w-40 h-1 gradient-shift mx-auto rounded-full scale-fade animate-delay-400"></div>
           </div>
 
-          {/* Value Proposition */}
-          <div className="text-center mb-20 animate-slide-up animate-delay-300">
-            <h2 className="text-4xl md:text-6xl font-light mb-8 leading-tight text-foreground">
-              <span className="block mb-2">Strategic Excellence.</span>
-              <span className="block mb-2 text-muted-foreground">Operational Precision.</span>
-              <span className="block text-primary">Future-Ready Solutions.</span>
+          {/* Futuristic Value Proposition */}
+          <div className="text-center mb-24 slide-up-fade animate-delay-300">
+            <h2 className="text-5xl md:text-7xl font-light mb-12 leading-tight">
+              <span className="block mb-4 text-foreground">Beyond Strategy.</span>
+              <span className="block mb-4 holographic-text">Beyond Innovation.</span>
+              <span className="block text-primary font-semibold">Beyond Tomorrow.</span>
             </h2>
             
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-5xl mx-auto leading-relaxed font-light">
-              We deliver transformational consulting services that combine Fortune 100 strategic depth 
-              with boutique-level precision and cutting-edge technological innovation.
+            <p className="text-2xl md:text-3xl text-muted-foreground mb-16 max-w-6xl mx-auto leading-relaxed font-light">
+              We architect the future of enterprise through quantum-leap strategic frameworks, 
+              AI-powered operational excellence, and breakthrough technological integration.
             </p>
           </div>
 
-          {/* Clean Metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 animate-fade-in animate-delay-400">
-            <div className="text-center group">
-              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="text-5xl font-light text-primary mb-3">7</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Practice Areas</div>
+          {/* Futuristic Metrics Dashboard */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24 scale-fade animate-delay-400">
+            {[
+              { icon: Cpu, value: '12+', label: 'AI-POWERED SOLUTIONS' },
+              { icon: Globe, value: '8', label: 'QUANTUM OFFICES' },
+              { icon: Users, value: '1000+', label: 'FUTURE ENTERPRISES' },
+              { icon: Target, value: '99.7%', label: 'PRECISION RATE' }
+            ].map((metric, index) => (
+              <div key={index} className="text-center group scale-fade" style={{ animationDelay: `${0.5 + index * 0.1}s` }}>
+                <div className="glass-morphism neon-border rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 pulse-glow">
+                  <metric.icon className="h-8 w-8 text-primary mx-auto mb-4 float" />
+                  <div className="text-6xl font-black holographic-text mb-3">{metric.value}</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-bold">{metric.label}</div>
+                </div>
               </div>
-            </div>
-            <div className="text-center group">
-              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="text-5xl font-light text-primary mb-3">5</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Global Offices</div>
-              </div>
-            </div>
-            <div className="text-center group">
-              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="text-5xl font-light text-primary mb-3">500+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Enterprise Clients</div>
-              </div>
-            </div>
-            <div className="text-center group">
-              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="text-5xl font-light text-primary mb-3">98%</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Client Retention</div>
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Clean CTAs */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20 animate-slide-up animate-delay-400">
+          {/* Futuristic CTAs */}
+          <div className="flex flex-col sm:flex-row gap-8 justify-center mb-24 slide-up-fade animate-delay-500">
             <Button 
               size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="holographic-bg text-white px-16 py-8 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 neon-border"
             >
-              Schedule Strategic Consultation
-              <ArrowRight className="ml-3 h-5 w-5" />
+              ACTIVATE FUTURE STRATEGY
+              <ArrowRight className="ml-4 h-6 w-6" />
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-2 border-border text-foreground hover:bg-muted px-12 py-6 text-lg font-medium rounded-xl transition-all duration-300 hover:-translate-y-1"
+              className="glass-morphism neon-border text-foreground hover:bg-primary/10 px-16 py-8 text-xl font-bold rounded-2xl transition-all duration-500 hover:-translate-y-2"
             >
-              <Play className="mr-3 h-5 w-5" />
-              View Case Studies
+              <Play className="mr-4 h-6 w-6" />
+              NEURAL CASE STUDIES
             </Button>
           </div>
 
-          {/* Trust Indicators */}
-          <div className="border-t border-border pt-16 animate-fade-in animate-delay-400">
-            <div className="text-center mb-12">
-              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-8 font-medium">Trusted by Global Leaders</p>
-              <div className="flex flex-wrap justify-center items-center gap-16">
-                <div className="flex items-center space-x-3 group cursor-pointer">
-                  <Shield className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
-                  <span className="text-muted-foreground text-sm font-medium">Fortune 100</span>
-                </div>
-                <div className="flex items-center space-x-3 group cursor-pointer">
-                  <Zap className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
-                  <span className="text-muted-foreground text-sm font-medium">Global Reach</span>
-                </div>
-                <div className="flex items-center space-x-3 group cursor-pointer">
-                  <Target className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
-                  <span className="text-muted-foreground text-sm font-medium">Proven Results</span>
-                </div>
+          {/* Futuristic Trust Indicators */}
+          <div className="border-t border-primary/20 pt-20 scale-fade animate-delay-600">
+            <div className="text-center mb-16">
+              <p className="text-sm text-muted-foreground uppercase tracking-[0.3em] mb-12 font-bold">TRUSTED BY TOMORROW'S LEADERS</p>
+              <div className="flex flex-wrap justify-center items-center gap-20">
+                {[
+                  { icon: Shield, label: 'QUANTUM SECURITY' },
+                  { icon: Zap, label: 'NEURAL PROCESSING' },
+                  { icon: Target, label: 'PRECISION OUTCOMES' },
+                  { icon: Award, label: 'FUTURE CERTIFIED' }
+                ].map((item, index) => (
+                  <div key={index} className="flex flex-col items-center space-y-4 group cursor-pointer scale-fade" style={{ animationDelay: `${0.7 + index * 0.1}s` }}>
+                    <div className="p-4 rounded-full glass-morphism neon-border group-hover:pulse-glow transition-all duration-300">
+                      <item.icon className="h-10 w-10 text-primary group-hover:scale-110 transition-transform float" />
+                    </div>
+                    <span className="text-muted-foreground text-sm font-bold tracking-wider">{item.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
             
             <div className="text-center">
-              <p className="text-muted-foreground text-lg italic font-light">
-                "Where Strategy Meets Innovation. Where Excellence Becomes Standard."
+              <p className="text-muted-foreground text-2xl italic font-light holographic-text">
+                "Where Tomorrow's Strategy Meets Today's Innovation"
+              </p>
+              <p className="text-sm text-muted-foreground mt-4 font-semibold tracking-wider">
+                - HUNAIN QURESHI, FOUNDER & VISIONARY ARCHITECT
               </p>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Minimal ambient elements */}
-      <div className="absolute top-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-primary/3 rounded-full blur-3xl"></div>
     </section>
   );
 };
