@@ -1,5 +1,6 @@
 
 import { Globe, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -35,13 +36,13 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-white mb-4">Practice Areas</h4>
             <ul className="space-y-2 text-sm text-slate-400">
-              <li><a href="#" className="hover:text-white transition-colors">NovaStrategy™</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">NovaOps™</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">NovaDigital™</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">NovaCapital™</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">NovaPeople™</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">NovaSector™</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">NovaESG™</a></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">NovaStrategy™</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">NovaOps™</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">NovaDigital™</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">NovaCapital™</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">NovaPeople™</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">NovaSector™</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">NovaESG™</Link></li>
             </ul>
           </div>
 
@@ -49,11 +50,11 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-white mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-slate-400">
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Leadership</a></li>
+              <li><Link to="/team" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/team" className="hover:text-white transition-colors">Leadership</Link></li>
               <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Insights</a></li>
+              <li><Link to="/case-studies" className="hover:text-white transition-colors">Case Studies</Link></li>
+              <li><Link to="/insights" className="hover:text-white transition-colors">Insights</Link></li>
               <li><a href="#" className="hover:text-white transition-colors">Press</a></li>
             </ul>
           </div>
