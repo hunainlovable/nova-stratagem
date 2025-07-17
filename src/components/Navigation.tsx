@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Menu, X, ArrowRight, Building2, Cpu } from 'lucide-react';
+import { Menu, X, ArrowRight, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -9,11 +9,11 @@ const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: 'Neural Services', href: '/services' },
-    { name: 'Quantum Leadership', href: '/team' },
-    { name: 'Future Studies', href: '/case-studies' },
-    { name: 'AI Insights', href: '/insights' },
-    { name: 'Neural Link', href: '#contact' }
+    { name: 'Services', href: '/services' },
+    { name: 'Leadership', href: '/team' },
+    { name: 'Case Studies', href: '/case-studies' },
+    { name: 'Insights', href: '/insights' },
+    { name: 'Contact', href: '#contact' }
   ];
 
   const isActive = (href: string) => {
@@ -36,37 +36,35 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full glass-morphism backdrop-blur-3xl neon-border z-50">
+    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-xl border-b border-border z-50">
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-24">
-          {/* Futuristic Logo */}
+        <div className="flex items-center justify-between h-20">
+          {/* Clean Logo */}
           <Link to="/" className="flex items-center space-x-4 group">
-            <div className="flex items-center space-x-4">
-              <div className="w-14 h-14 holographic-bg rounded-2xl flex items-center justify-center group-hover:pulse-glow transition-all duration-500 group-hover:scale-110">
-                <Building2 className="h-8 w-8 text-white" />
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <Building2 className="h-7 w-7 text-primary-foreground" />
               </div>
               <div>
-                <div className="text-3xl font-black holographic-text tracking-tight">
-                  NOVA STRATAGEM
+                <div className="text-2xl font-bold text-foreground tracking-tight">
+                  Nova Stratagem
                 </div>
-                <div className="text-xs text-muted-foreground font-bold tracking-[0.4em]">
-                  FUTURE ENTERPRISE GROUP
+                <div className="text-xs text-muted-foreground font-medium tracking-[0.3em]">
+                  GROUP
                 </div>
               </div>
             </div>
           </Link>
 
-          {/* Futuristic Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-4">
+          {/* Clean Desktop Menu */}
+          <div className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => (
               item.href.startsWith('#') ? (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
-                  className={`px-8 py-4 rounded-xl transition-all duration-300 font-bold text-sm tracking-wider hover:glass-morphism hover:neon-border ${
-                    isActive(item.href) 
-                      ? 'holographic-text glass-morphism neon-border' 
-                      : 'text-muted-foreground hover:text-primary hover:scale-105'
+                  className={`px-6 py-3 rounded-lg transition-all duration-200 font-medium hover:bg-muted ${
+                    isActive(item.href) ? 'text-primary bg-muted' : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
                   {item.name}
@@ -75,10 +73,10 @@ const Navigation = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`px-8 py-4 rounded-xl transition-all duration-300 font-bold text-sm tracking-wider hover:glass-morphism hover:neon-border ${
+                  className={`px-6 py-3 rounded-lg transition-all duration-200 font-medium hover:bg-muted ${
                     isActive(item.href) 
-                      ? 'holographic-text glass-morphism neon-border' 
-                      : 'text-muted-foreground hover:text-primary hover:scale-105'
+                      ? 'text-primary bg-muted' 
+                      : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
                   {item.name}
@@ -86,35 +84,35 @@ const Navigation = () => {
               )
             ))}
             
-            <div className="ml-12 pl-8 border-l border-primary/30">
-              <Button className="holographic-bg text-white px-10 py-4 font-black text-sm tracking-wider rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-1 neon-border">
-                NEURAL ACTIVATION
-                <ArrowRight className="ml-3 h-5 w-5" />
+            <div className="ml-8 pl-8 border-l border-border">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
+                Get Started
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
           </div>
 
-          {/* Futuristic Mobile Menu Button */}
+          {/* Mobile Menu Button */}
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-muted-foreground hover:text-primary p-3 rounded-xl hover:glass-morphism hover:neon-border transition-all duration-300"
+              className="text-muted-foreground hover:text-foreground p-2 rounded-lg hover:bg-muted transition-colors"
             >
-              {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
 
-        {/* Futuristic Mobile Menu */}
+        {/* Clean Mobile Menu */}
         {isOpen && (
-          <div className="lg:hidden py-8 border-t border-primary/20 glass-morphism">
-            <div className="flex flex-col space-y-2">
+          <div className="lg:hidden py-6 border-t border-border">
+            <div className="flex flex-col space-y-1">
               {navItems.map((item) => (
                 item.href.startsWith('#') ? (
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
-                    className="text-muted-foreground hover:text-primary hover:glass-morphism hover:neon-border px-6 py-5 text-left rounded-xl transition-all font-bold tracking-wider"
+                    className="text-muted-foreground hover:text-foreground hover:bg-muted px-4 py-4 text-left rounded-lg transition-all font-medium"
                   >
                     {item.name}
                   </button>
@@ -122,10 +120,10 @@ const Navigation = () => {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`px-6 py-5 rounded-xl transition-all font-bold tracking-wider ${
+                    className={`px-4 py-4 rounded-lg transition-all font-medium ${
                       isActive(item.href) 
-                        ? 'holographic-text glass-morphism neon-border' 
-                        : 'text-muted-foreground hover:text-primary hover:glass-morphism hover:neon-border'
+                        ? 'text-primary bg-muted' 
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -133,10 +131,10 @@ const Navigation = () => {
                   </Link>
                 )
               ))}
-              <div className="pt-6 mt-6 border-t border-primary/20">
-                <Button className="w-full holographic-bg text-white font-black rounded-xl py-6 tracking-wider neon-border">
-                  NEURAL ACTIVATION
-                  <ArrowRight className="ml-3 h-5 w-5" />
+              <div className="pt-4 mt-4 border-t border-border">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg py-4">
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </div>
