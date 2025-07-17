@@ -31,52 +31,55 @@ const differentiators = [
 
 const Differentiators = () => {
   return (
-    <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-slate-950 to-purple-950/20"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]"></div>
+    <section className="py-32 bg-muted/30 relative overflow-hidden">
+      {/* Subtle background elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5"></div>
       
       <div className="relative container mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6">
+        {/* Clean Section Header */}
+        <div className="text-center mb-24 animate-slide-up">
+          <div className="inline-flex items-center px-6 py-3 rounded-full bg-card border border-border text-primary mb-8">
             <Sparkles className="h-4 w-4 mr-2" />
             <span className="text-sm font-semibold uppercase tracking-wider">Competitive Advantage</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-light mb-6 tracking-tight">
+          <h2 className="text-6xl md:text-7xl font-light mb-8 tracking-tighter text-foreground">
             What Sets Us Apart
           </h2>
-          <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
             Revolutionary methodologies and breakthrough technologies that redefine 
             the boundaries of strategic consulting excellence.
           </p>
         </div>
 
-        {/* Differentiators Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto mb-20">
+        {/* Clean Differentiators Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto mb-24">
           {differentiators.map((item, index) => (
-            <div key={index} className="group relative">
-              <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800/50 rounded-2xl p-8 hover:bg-slate-900/70 hover:border-slate-700/50 transition-all duration-500 hover:scale-[1.02] h-full">
+            <div 
+              key={index} 
+              className="group relative animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="bg-card border border-border rounded-2xl p-10 hover:shadow-xl transition-all duration-500 hover:-translate-y-1 h-full">
                 {/* Header */}
-                <div className="flex items-start justify-between mb-6">
+                <div className="flex items-start justify-between mb-8">
                   <div className="flex items-center space-x-4">
-                    <div className="bg-gradient-to-r from-blue-500 to-cyan-500 p-4 rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <item.icon className="h-7 w-7 text-white" />
+                    <div className="bg-primary/10 p-4 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                      <item.icon className="h-8 w-8 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors mb-1">
+                      <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
                         {item.title}
                       </h3>
-                      <div className="text-sm font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">
+                      <div className="text-sm font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full">
                         {item.metric}
                       </div>
                     </div>
                   </div>
-                  <ArrowRight className="h-5 w-5 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-300" />
+                  <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all duration-300" />
                 </div>
                 
                 {/* Description */}
-                <p className="text-slate-300 leading-relaxed text-lg">
+                <p className="text-muted-foreground leading-relaxed text-lg">
                   {item.description}
                 </p>
               </div>
@@ -85,35 +88,35 @@ const Differentiators = () => {
         </div>
 
         {/* NovaToolkit Highlight */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-slate-900/80 to-slate-800/80 backdrop-blur-sm border border-slate-700/50 p-12 rounded-3xl max-w-5xl mx-auto shadow-2xl">
-            <div className="flex items-center justify-center mb-6">
-              <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-4 rounded-2xl mr-4">
-                <Layers className="h-8 w-8 text-white" />
+        <div className="text-center animate-slide-up">
+          <div className="bg-card border border-border p-16 rounded-3xl max-w-6xl mx-auto shadow-lg">
+            <div className="flex items-center justify-center mb-8">
+              <div className="bg-primary/10 p-5 rounded-2xl mr-4">
+                <Layers className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-blue-400">NovaToolkit™</h3>
+              <h3 className="text-4xl md:text-5xl font-bold text-primary">NovaToolkit™</h3>
             </div>
-            <p className="text-xl text-slate-300 mb-8 leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
               Our proprietary suite of AI-enhanced frameworks, predictive dashboards, and strategic methodologies—
               refined through decades of Fortune 500 engagements and continuously evolved through machine learning.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-slate-800/50 p-4 rounded-xl">
-                <div className="text-2xl font-bold text-blue-400 mb-2">200+</div>
-                <div className="text-sm text-slate-400">Strategic Frameworks</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-muted/50 p-6 rounded-xl">
+                <div className="text-3xl font-bold text-primary mb-3">200+</div>
+                <div className="text-sm text-muted-foreground">Strategic Frameworks</div>
               </div>
-              <div className="bg-slate-800/50 p-4 rounded-xl">
-                <div className="text-2xl font-bold text-cyan-400 mb-2">AI-Powered</div>
-                <div className="text-sm text-slate-400">Real-time Analytics</div>
+              <div className="bg-muted/50 p-6 rounded-xl">
+                <div className="text-3xl font-bold text-primary mb-3">AI-Powered</div>
+                <div className="text-sm text-muted-foreground">Real-time Analytics</div>
               </div>
-              <div className="bg-slate-800/50 p-4 rounded-xl">
-                <div className="text-2xl font-bold text-purple-400 mb-2">Proven</div>
-                <div className="text-sm text-slate-400">Results Guarantee</div>
+              <div className="bg-muted/50 p-6 rounded-xl">
+                <div className="text-3xl font-bold text-primary mb-3">Proven</div>
+                <div className="text-sm text-muted-foreground">Results Guarantee</div>
               </div>
             </div>
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-medium rounded-lg shadow-xl hover:shadow-2xl transition-all"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               Explore NovaToolkit
               <ArrowRight className="ml-2 h-5 w-5" />
