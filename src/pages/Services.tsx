@@ -89,7 +89,7 @@ const Services = () => {
     <div className="min-h-screen bg-slate-50">
       <Navigation />
       
-      <div className="pt-20 pb-16">
+      <div className="pt-32 pb-16">
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-12">

@@ -1,131 +1,281 @@
 
-import { ArrowRight, Play, Shield, Zap, Target, Award } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
-const Hero = () => {
+const Hero: React.FC = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [hoveredTile, setHoveredTile] = useState<number | null>(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [mouseVelocity, setMouseVelocity] = useState({ x: 0, y: 0 });
+  const [lastMousePosition, setLastMousePosition] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let animationFrameId: number;
+    let lastTime = 0;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        const currentTime = performance.now();
+        const deltaTime = currentTime - lastTime;
+        
+        const newPosition = {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        };
+
+        // Calculate velocity
+        const velocity = {
+          x: (newPosition.x - lastMousePosition.x) / deltaTime,
+          y: (newPosition.y - lastMousePosition.y) / deltaTime,
+        };
+
+        setMouseVelocity(velocity);
+        setLastMousePosition(newPosition);
+        setMousePosition(newPosition);
+        lastTime = currentTime;
+      }
+    };
+
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, [lastMousePosition]);
+
+  const tiles = [
+    { id: 1, title: 'NovaShield™', subtitle: 'Advanced Cybersecurity', color: 'from-green-600 to-emerald-600', delay: 0 },
+    { id: 2, title: 'NovaPulse™', subtitle: 'Performance Monitoring', color: 'from-blue-600 to-cyan-600', delay: 0.1 },
+    { id: 3, title: 'NovaSphere™', subtitle: 'Cloud Infrastructure', color: 'from-purple-600 to-violet-600', delay: 0.2 },
+    { id: 4, title: 'NovaVault™', subtitle: 'Secure Data Management', color: 'from-violet-600 to-purple-600', delay: 0.3 },
+    { id: 5, title: 'NovaVision™', subtitle: 'Business Intelligence', color: 'from-cyan-600 to-blue-600', delay: 0.4 },
+    { id: 6, title: 'NovaMind™', subtitle: 'AI Decision Engine', color: 'from-amber-500 to-orange-500', delay: 0.5 },
+    { id: 7, title: 'NovaBoost™', subtitle: 'Performance Optimization', color: 'from-orange-500 to-amber-500', delay: 0.6 },
+    { id: 8, title: 'NovaGlobal™', subtitle: 'Worldwide Solutions', color: 'from-emerald-600 to-green-600', delay: 0.7 },
+  ];
+
+  // Calculate dynamic effects based on mouse velocity
+  const mouseSpeed = Math.sqrt(mouseVelocity.x ** 2 + mouseVelocity.y ** 2);
+  const intensity = Math.min(mouseSpeed * 30, 0.3); // Reduced intensity for professionalism
+
   return (
-    <section className="relative min-h-screen bg-background text-foreground overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:60px_60px]"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-muted/20 via-transparent to-muted/20"></div>
+    <div 
+      ref={heroRef}
+      className="relative min-h-screen classified-gradient-bg overflow-hidden pt-32 md:pt-40"
+      style={{
+        background: `
+          radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, ${0.05 + intensity * 0.05}) 0%, transparent 50%),
+          radial-gradient(circle at ${mousePosition.x + mouseVelocity.x * 5}px ${mousePosition.y + mouseVelocity.y * 5}px, rgba(6, 182, 212, ${0.03 + intensity * 0.05}) 0%, transparent 40%)
+        `
+      }}
+    >
+      {/* Professional Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Subtle Circuit Board Patterns */}
+        <div className="absolute inset-0 opacity-10">
+          {/* Main Circuit Grid */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.2) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px',
+            animation: 'electricGrid 30s linear infinite',
+            transform: `translateY(${scrollY * 0.2}px)`
+          }}></div>
+          
+          {/* Subtle Circuit Nodes */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              radial-gradient(circle at 30px 30px, rgba(59, 130, 246, 0.3) 1px, transparent 1px),
+              radial-gradient(circle at 90px 90px, rgba(6, 182, 212, 0.3) 1px, transparent 1px),
+              radial-gradient(circle at 150px 150px, rgba(139, 92, 246, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '300px 300px',
+            animation: 'electricGrid 25s linear infinite reverse'
+          }}></div>
+        </div>
+
+        {/* Minimal Floating Particles */}
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-0.5 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full electric-particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 8}s`,
+              animationDuration: `${6 + Math.random() * 3}s`,
+              transform: `translateY(${scrollY * 0.05}px)`
+            }}
+          />
+        ))}
       </div>
-      
-      <div className="relative container mx-auto px-6 pt-32 pb-20">
-        <div className="max-w-7xl mx-auto">
-          {/* Corporate Header */}
-          <div className="text-center mb-16 animate-slide-up">
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-muted/50 border border-border mb-8 animate-fade-in animate-delay-100">
-              <Award className="h-4 w-4 text-primary mr-2" />
-              <span className="text-sm font-medium text-muted-foreground">Elite Consulting Excellence Since 2024</span>
-            </div>
-            
-            <h1 className="text-7xl md:text-9xl font-light mb-6 tracking-tighter animate-slide-up animate-delay-200">
-              <span className="font-bold text-primary">
-                NOVA STRATAGEM
-              </span>
-            </h1>
-            <div className="text-2xl md:text-3xl text-muted-foreground font-light tracking-[0.4em] mb-4 animate-fade-in animate-delay-300">
-              GROUP
-            </div>
-            <div className="w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto animate-scale-in animate-delay-400"></div>
-          </div>
 
-          {/* Value Proposition */}
-          <div className="text-center mb-20 animate-slide-up animate-delay-300">
-            <h2 className="text-4xl md:text-6xl font-light mb-8 leading-tight text-foreground">
-              <span className="block mb-2">Strategic Excellence.</span>
-              <span className="block mb-2 text-muted-foreground">Operational Precision.</span>
-              <span className="block text-primary">Future-Ready Solutions.</span>
-            </h2>
-            
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-5xl mx-auto leading-relaxed font-light">
-              We deliver transformational consulting services that combine Fortune 100 strategic depth 
-              with boutique-level precision and cutting-edge technological innovation.
-            </p>
+      {/* Main Content */}
+      <div className="relative z-10 container mx-auto px-4 py-20">
+        {/* Professional Header Section */}
+        <div className="text-center mb-16">
+          <div className="mb-6">
+            <span className="clearance-badge-classified mr-4 text-xs">ENTERPRISE SOLUTION</span>
+            <span className="clearance-badge-safety mr-4 text-xs">HOUSTON BASED</span>
+            <span className="clearance-badge-security text-xs">UNITED STATES</span>
           </div>
+          
+          <h1 className="classified-header text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-none tracking-tight" style={{
+            transform: `translateY(${scrollY * 0.05}px)`,
+            textShadow: `0 0 30px rgba(59, 130, 246, 0.2)`
+          }}>
+            NOVA
+            <span className="block mt-2" style={{
+              background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 25%, #8b5cf6 50%, #10b981 75%, #f59e0b 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
+              STRATAGEM
+            </span>
+          </h1>
+          
+          <p className="electric-text text-2xl md:text-3xl lg:text-4xl font-bold mb-8 max-w-4xl mx-auto leading-tight" style={{
+            transform: `translateY(${scrollY * 0.03}px)`,
+            textShadow: `0 0 20px rgba(59, 130, 246, 0.3)`
+          }}>
+            Enterprise Technology Solutions
+          </p>
+          
+          <p className="monospace-text text-lg md:text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed" style={{
+            transform: `translateY(${scrollY * 0.02}px)`
+          }}>
+            Leading provider of advanced enterprise solutions in Houston, Texas. 
+            Delivering quantum intelligence, cybersecurity, and digital transformation 
+            services for forward-thinking organizations across the United States.
+          </p>
 
-          {/* Clean Metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 animate-fade-in animate-delay-400">
-            <div className="text-center group">
-              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="text-5xl font-light text-primary mb-3">7</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Practice Areas</div>
-              </div>
-            </div>
-            <div className="text-center group">
-              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="text-5xl font-light text-primary mb-3">5</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Global Offices</div>
-              </div>
-            </div>
-            <div className="text-center group">
-              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="text-5xl font-light text-primary mb-3">500+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Enterprise Clients</div>
-              </div>
-            </div>
-            <div className="text-center group">
-              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="text-5xl font-light text-primary mb-3">98%</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Client Retention</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Clean CTAs */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20 animate-slide-up animate-delay-400">
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <Link 
+              to="/services" 
+              className="btn-tesla-primary text-lg px-10 py-4 futuristic-glow-blue transform hover:scale-105 transition-all duration-300"
+              style={{
+                boxShadow: `0 0 20px rgba(59, 130, 246, 0.3)`
+              }}
             >
-              Schedule Strategic Consultation
-              <ArrowRight className="ml-3 h-5 w-5" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-2 border-border text-foreground hover:bg-muted px-12 py-6 text-lg font-medium rounded-xl transition-all duration-300 hover:-translate-y-1"
+              VIEW SOLUTIONS
+            </Link>
+            <Link 
+              to="/contact" 
+              className="btn-tesla-secondary text-lg px-10 py-4 transform hover:scale-105 transition-all duration-300"
+              style={{
+                boxShadow: `0 0 15px rgba(59, 130, 246, 0.2)`
+              }}
             >
-              <Play className="mr-3 h-5 w-5" />
-              View Case Studies
-            </Button>
+              CONTACT US
+            </Link>
           </div>
+        </div>
 
-          {/* Trust Indicators */}
-          <div className="border-t border-border pt-16 animate-fade-in animate-delay-400">
-            <div className="text-center mb-12">
-              <p className="text-sm text-muted-foreground uppercase tracking-wider mb-8 font-medium">Trusted by Global Leaders</p>
-              <div className="flex flex-wrap justify-center items-center gap-16">
-                <div className="flex items-center space-x-3 group cursor-pointer">
-                  <Shield className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
-                  <span className="text-muted-foreground text-sm font-medium">Fortune 100</span>
+        {/* Professional Service Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          {tiles.map((tile, index) => (
+            <div
+              key={tile.id}
+              className={`
+                classified-card p-6 cursor-pointer transition-all duration-500 electric-tile
+                ${hoveredTile === tile.id ? 'scale-105 z-20' : 'scale-100'}
+                ${hoveredTile === tile.id ? 'futuristic-glow' : ''}
+              `}
+              onMouseEnter={() => setHoveredTile(tile.id)}
+              onMouseLeave={() => setHoveredTile(null)}
+              style={{
+                transform: hoveredTile === tile.id 
+                  ? `perspective(1000px) rotateX(${(mousePosition.y - 300) * 0.005}deg) rotateY(${(mousePosition.x - 400) * 0.005}deg) scale(1.05)`
+                  : 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                animationDelay: `${tile.delay}s`,
+                boxShadow: hoveredTile === tile.id 
+                  ? '0 15px 30px rgba(0, 0, 0, 0.1), 0 0 20px rgba(59, 130, 246, 0.2)'
+                  : '0 8px 16px rgba(0, 0, 0, 0.08)'
+              }}
+            >
+              <div className="text-center">
+                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${tile.color} flex items-center justify-center futuristic-glow transform group-hover:scale-105 transition-transform duration-300`} style={{
+                  boxShadow: `0 0 20px ${tile.color.includes('blue') ? 'rgba(59, 130, 246, 0.3)' : 
+                    tile.color.includes('green') ? 'rgba(16, 185, 129, 0.3)' :
+                    tile.color.includes('purple') ? 'rgba(139, 92, 246, 0.3)' :
+                    tile.color.includes('amber') ? 'rgba(245, 158, 11, 0.3)' :
+                    tile.color.includes('cyan') ? 'rgba(6, 182, 212, 0.3)' :
+                    'rgba(59, 130, 246, 0.3)'}`
+                }}>
+                  <div className="w-8 h-8 bg-white rounded-lg opacity-90"></div>
                 </div>
-                <div className="flex items-center space-x-3 group cursor-pointer">
-                  <Zap className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
-                  <span className="text-muted-foreground text-sm font-medium">Global Reach</span>
-                </div>
-                <div className="flex items-center space-x-3 group cursor-pointer">
-                  <Target className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
-                  <span className="text-muted-foreground text-sm font-medium">Proven Results</span>
+                
+                <h3 className="classified-text text-lg font-bold mb-2 text-gray-800">
+                  {tile.title}
+                </h3>
+                
+                <p className="monospace-text text-xs text-gray-600 mb-4">
+                  {tile.subtitle}
+                </p>
+                
+                <div className="flex justify-center space-x-2">
+                  <div className="status-indicator-classified"></div>
+                  <span className="text-xs text-gray-500 monospace-text font-bold">READY</span>
                 </div>
               </div>
             </div>
-            
-            <div className="text-center">
-              <p className="text-muted-foreground text-lg italic font-light">
-                "Where Strategy Meets Innovation. Where Excellence Becomes Standard."
-              </p>
-            </div>
+          ))}
+        </div>
+
+        {/* Professional Bottom Connector */}
+        <div className="mt-16">
+          <div className="tesla-connector h-1 w-full max-w-4xl mx-auto rounded-full" style={{
+            boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)'
+          }}></div>
+        </div>
+      </div>
+
+      {/* Professional Status Bar */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="classified-panel px-8 py-4 flex items-center space-x-8" style={{
+          boxShadow: '0 15px 30px rgba(0, 0, 0, 0.08), 0 0 20px rgba(59, 130, 246, 0.15)',
+          minWidth: 'max-content'
+        }}>
+          <div className="flex items-center space-x-3">
+            <div className="status-indicator-classified"></div>
+            <span className="classified-text text-sm text-gray-700 font-bold whitespace-nowrap">SYSTEM ACTIVE</span>
+          </div>
+          <div className="w-px h-6 bg-gray-300 flex-shrink-0"></div>
+          <div className="flex items-center space-x-3">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse flex-shrink-0"></div>
+            <span className="classified-text text-sm text-gray-700 font-bold whitespace-nowrap">ALL SYSTEMS NOMINAL</span>
+          </div>
+          <div className="w-px h-6 bg-gray-300 flex-shrink-0"></div>
+          <div className="flex items-center space-x-3">
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse flex-shrink-0" style={{ animationDelay: '0.5s' }}></div>
+            <span className="classified-text text-sm text-gray-700 font-bold whitespace-nowrap">ENTERPRISE READY</span>
           </div>
         </div>
       </div>
 
-      {/* Minimal ambient elements */}
-      <div className="absolute top-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-primary/3 rounded-full blur-3xl"></div>
-    </section>
+      {/* Professional Scroll Indicator */}
+      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="flex flex-col items-center space-y-1">
+          <span className="classified-text text-xs text-gray-500 font-bold tracking-wider">EXPLORE</span>
+          <div className="w-0.5 h-8 bg-gradient-to-b from-blue-600 to-transparent animate-pulse"></div>
+        </div>
+      </div>
+    </div>
   );
 };
 
 export default Hero;
+

@@ -1,153 +1,175 @@
 
-import { Eye, Lightbulb, Leaf, Users, Shield, Target, Zap, Award } from 'lucide-react';
+import React from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { Shield, Heart, Zap, Eye, Users, Globe } from 'lucide-react';
 
 const values = [
   {
-    icon: Eye,
-    title: "Strategic Foresight",
-    subtitle: "Anticipating Tomorrow",
-    description: "We identify emerging trends and market shifts before they impact your business, enabling proactive strategic positioning."
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation Excellence",
-    subtitle: "Breakthrough Solutions",
-    description: "Combining analytical rigor with creative problem-solving to deliver transformational business outcomes."
-  },
-  {
-    icon: Leaf,
-    title: "Sustainable Impact",
-    subtitle: "ESG Integration",
-    description: "Environmental, social, and governance considerations are fundamental to every strategic recommendation we make."
-  },
-  {
-    icon: Users,
-    title: "Collaborative Partnership",
-    subtitle: "Shared Success",
-    description: "We work as an extension of your team, fostering knowledge transfer and building internal capabilities."
-  }
-];
-
-const principles = [
-  {
     icon: Shield,
-    title: "Unwavering Integrity",
-    description: "Absolute confidentiality and ethical standards in every client engagement."
+    title: "EXCELLENCE",
+    description: "We maintain the highest standards in every aspect of our work, delivering exceptional results that exceed expectations.",
+    clearance: "TOP SECRET",
+    clearanceLevel: "TS/SCI",
+    type: "safety"
   },
   {
-    icon: Target,
-    title: "Results-Driven Focus",
-    description: "Measurable outcomes and tangible value creation for all stakeholders."
+    icon: Heart,
+    title: "INTEGRITY",
+    description: "Trust is the foundation of our relationships. We operate with complete transparency and ethical practices.",
+    clearance: "CLASSIFIED",
+    clearanceLevel: "SECRET",
+    type: "trust"
   },
   {
     icon: Zap,
-    title: "Agile Excellence",
-    description: "Rapid response capabilities with uncompromising quality standards."
+    title: "INNOVATION",
+    description: "We continuously push the boundaries of technology and methodology to deliver cutting-edge solutions.",
+    clearance: "SECRET",
+    clearanceLevel: "SECRET",
+    type: "security"
   },
   {
-    icon: Award,
-    title: "Continuous Innovation",
-    description: "Constantly evolving our methodologies to stay ahead of industry trends."
+    icon: Eye,
+    title: "PRECISION",
+    description: "Every detail matters. We approach each project with meticulous attention and strategic planning.",
+    clearance: "CONFIDENTIAL",
+    clearanceLevel: "CONF",
+    type: "safety"
+  },
+  {
+    icon: Users,
+    title: "COLLABORATION",
+    description: "We believe in the power of partnership, working closely with clients to achieve shared success.",
+    clearance: "TOP SECRET",
+    clearanceLevel: "TS/SCI",
+    type: "trust"
+  },
+  {
+    icon: Globe,
+    title: "GLOBAL IMPACT",
+    description: "Our solutions create positive change across industries and borders, making a difference worldwide.",
+    clearance: "CONFIDENTIAL",
+    clearanceLevel: "CONF",
+    type: "security"
   }
 ];
 
-const Values = () => {
+const Values: React.FC = () => {
+  const getBadgeClass = (type: string) => {
+    switch (type) {
+      case 'safety': return 'clearance-badge-safety';
+      case 'security': return 'clearance-badge-security';
+      case 'trust': return 'clearance-badge-trust';
+      default: return 'clearance-badge-classified';
+    }
+  };
+
+  const getGlowClass = (type: string) => {
+    switch (type) {
+      case 'safety': return 'futuristic-glow-blue';
+      case 'security': return 'futuristic-glow-green';
+      case 'trust': return 'futuristic-glow-navy';
+      default: return 'futuristic-glow';
+    }
+  };
+
+  const getIconColor = (type: string) => {
+    switch (type) {
+      case 'safety': return 'text-blue-600';
+      case 'security': return 'text-green-600';
+      case 'trust': return 'text-navy-600';
+      default: return 'text-gray-700';
+    }
+  };
+
+  const getIconBg = (type: string) => {
+    switch (type) {
+      case 'safety': return 'bg-blue-600/10 border-blue-600/20';
+      case 'security': return 'bg-green-600/10 border-green-600/20';
+      case 'trust': return 'bg-navy-600/10 border-navy-600/20';
+      default: return 'bg-gray-700/10 border-gray-700/20';
+    }
+  };
+
   return (
-    <section className="py-32 bg-background">
-      <div className="container mx-auto px-6">
-        {/* Clean Section Header */}
-        <div className="text-center mb-24 animate-slide-up">
-          <div className="inline-flex items-center px-6 py-3 rounded-full bg-muted/50 border border-border text-muted-foreground mb-8">
-            <span className="text-sm font-semibold uppercase tracking-wider">Our Foundation</span>
+    <section className="relative py-24 overflow-hidden classified-gradient-bg">
+      {/* Classified Background */}
+      <div className="absolute inset-0 bg-white"></div>
+      
+      {/* Classified Grid Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="w-full h-full" style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }}></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Classified Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center px-4 py-2 rounded-md bg-red-500/10 border border-red-500/30 mb-6">
+            <div className="status-indicator-classified mr-2"></div>
+            <span className="text-red-400 text-xs font-mono tracking-wider uppercase">CLASSIFIED FOUNDATION</span>
           </div>
-          <h2 className="text-6xl md:text-7xl font-light text-foreground mb-8 tracking-tighter">
-            Core Values
+          <h2 className="text-4xl md:text-5xl font-black mb-6 classified-header">
+            OUR CORE VALUES
           </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            The fundamental principles that guide every strategic decision, 
-            client engagement, and business relationship we build.
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed monospace-text font-bold">
+            THESE PRINCIPLES GUIDE EVERYTHING WE DO, ENSURING WE DELIVER EXCEPTIONAL VALUE 
+            WHILE MAINTAINING THE HIGHEST STANDARDS OF EXCELLENCE AND INTEGRITY.
           </p>
         </div>
 
-        {/* Core Values */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-          {values.map((value, index) => (
-            <div 
-              key={index} 
-              className="group animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="bg-card border border-border p-12 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
-                <div className="flex items-start space-x-6">
-                  <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <value.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
-                      {value.title}
-                    </h3>
-                    <div className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-                      {value.subtitle}
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed text-lg">
-                      {value.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Operating Principles */}
-        <div className="mb-20">
-          <div className="text-center mb-16 animate-slide-up">
-            <h3 className="text-4xl md:text-5xl font-light text-foreground mb-6">
-              Operating Principles
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              The unwavering standards that define how we deliver excellence in every engagement.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {principles.map((principle, index) => (
-              <div 
-                key={index} 
-                className="text-center group animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+        {/* Classified Values Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {values.map((value, index) => {
+            const IconComponent = value.icon;
+            return (
+              <Card 
+                key={value.title}
+                className={`classified-card group hover:scale-105 transition-all duration-500 border-0 ${getGlowClass(value.type)}`}
+                style={{animationDelay: `${index * 0.1}s`}}
               >
-                <div className="bg-card border border-border p-8 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                  <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <principle.icon className="h-8 w-8 text-primary" />
+                <CardHeader className="text-center pb-4">
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-lg ${getIconBg(value.type)} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${getGlowClass(value.type)}`}>
+                    <IconComponent className={`w-8 h-8 ${getIconColor(value.type)}`} />
                   </div>
-                  <h4 className="text-lg font-bold text-foreground mb-4">
-                    {principle.title}
-                  </h4>
-                  <p className="text-muted-foreground leading-relaxed text-sm">
-                    {principle.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+                  <div className={`${getBadgeClass(value.type)} mx-auto mb-2`}>
+                    {value.clearanceLevel}
+                  </div>
+                  <CardTitle className="text-lg font-black text-black group-hover:text-gray-700 transition-colors duration-300 classified-text">
+                    {value.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <CardDescription className="text-gray-700 leading-relaxed monospace-text text-sm font-semibold">
+                    {value.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
-        {/* Mission Statement */}
-        <div className="text-center animate-slide-up">
-          <div className="bg-card border border-border text-foreground p-16 rounded-3xl max-w-6xl mx-auto shadow-lg">
-            <h3 className="text-4xl md:text-5xl font-light mb-8">Our Mission</h3>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-              To empower visionary leaders with transformational strategies that create sustainable competitive advantage, 
-              drive meaningful innovation, and generate lasting value for all stakeholders.
-            </p>
-            <div className="w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-8"></div>
-            <p className="text-lg text-muted-foreground italic">
-              "Excellence is not a destination, but a continuous journey of innovation and impact."
+        {/* Classified Mission Statement */}
+        <div className="mt-20">
+          <div className="classified-panel rounded-lg p-12 text-center futuristic-glow">
+            <h3 className="text-3xl md:text-4xl font-black text-black mb-6 classified-header">
+              OUR MISSION
+            </h3>
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed monospace-text font-bold">
+              TO EMPOWER ORGANIZATIONS WITH CUTTING-EDGE TECHNOLOGY SOLUTIONS THAT DRIVE INNOVATION, 
+              ENHANCE SECURITY, AND CREATE SUSTAINABLE COMPETITIVE ADVANTAGES IN AN EVER-EVOLVING DIGITAL LANDSCAPE.
             </p>
           </div>
         </div>
       </div>
+
+      {/* Classified Connector */}
+      <div className="classified-connector absolute bottom-0 left-0 right-0 h-2"></div>
     </section>
   );
 };

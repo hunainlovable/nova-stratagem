@@ -1,147 +1,259 @@
 
-import { Brain, Cog, Smartphone, DollarSign, Users, Building, Leaf, ArrowRight } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const services = [
-  {
-    icon: Brain,
-    title: "NovaStrategy™",
-    subtitle: "Strategic Consulting",
-    description: "Corporate strategy, market entry, competitive positioning, growth initiatives, M&A advisory, and C-suite strategic counsel.",
-    features: ["Strategic Planning", "Market Analysis", "Growth Strategy", "M&A Advisory"],
-    color: "text-primary"
-  },
-  {
-    icon: Cog,
-    title: "NovaOps™",
-    subtitle: "Operations Excellence", 
-    description: "Supply chain optimization, process reengineering, lean transformation, operational efficiency, and customer experience enhancement.",
-    features: ["Process Optimization", "Supply Chain", "Lean Operations", "CX Design"],
-    color: "text-primary"
-  },
-  {
-    icon: Smartphone,
-    title: "NovaDigital™",
-    subtitle: "Digital Transformation",
-    description: "AI/ML implementation, cloud migration, cybersecurity strategy, blockchain integration, and comprehensive digital modernization.",
-    features: ["AI/ML Strategy", "Cloud Migration", "Cybersecurity", "Digital Innovation"],
-    color: "text-primary"
-  },
-  {
-    icon: DollarSign,
-    title: "NovaCapital™",
-    subtitle: "Financial Advisory",
-    description: "M&A transaction support, financial strategy, risk management, capital optimization, valuation services, and compliance advisory.",
-    features: ["M&A Support", "Financial Strategy", "Risk Management", "Valuation"],
-    color: "text-primary"
-  },
-  {
-    icon: Users,
-    title: "NovaPeople™",
-    subtitle: "Human Capital",
-    description: "Organizational transformation, talent strategy, leadership development, culture change, and executive coaching programs.",
-    features: ["Talent Strategy", "Leadership Development", "Culture Change", "Executive Coaching"],
-    color: "text-primary"
-  },
-  {
-    icon: Building,
-    title: "NovaSector™",
-    subtitle: "Industry Expertise",
-    description: "Specialized consulting across healthcare, financial services, energy, technology, manufacturing, and government sectors.",
-    features: ["Healthcare", "Financial Services", "Energy", "Technology"],
-    color: "text-primary"
-  },
-  {
-    icon: Leaf,
-    title: "NovaESG™",
-    subtitle: "Sustainability & Governance",
-    description: "ESG strategy, sustainability transformation, net-zero planning, governance frameworks, and regulatory compliance.",
-    features: ["ESG Strategy", "Net-Zero Planning", "Governance", "Compliance"],
-    color: "text-primary"
-  }
-];
+const Services: React.FC = () => {
+  const [hoveredService, setHoveredService] = useState<number | null>(null);
 
-const Services = () => {
+  const services = [
+    {
+      id: 1,
+      title: 'NovaShield™',
+      subtitle: 'Advanced Cybersecurity Platform',
+      description: 'Next-generation cybersecurity platform that creates an impenetrable digital fortress around your enterprise infrastructure.',
+      icon: '🛡️',
+      color: 'green',
+      features: ['Zero-Day Protection', 'Behavioral Analysis', 'Threat Intelligence', 'Incident Response'],
+      path: '/services/novashield'
+    },
+    {
+      id: 2,
+      title: 'NovaPulse™',
+      subtitle: 'Real-Time Performance Monitoring',
+      description: 'Advanced real-time monitoring and performance optimization platform that keeps your systems running at peak efficiency.',
+      icon: '⚡',
+      color: 'blue',
+      features: ['Real-Time Monitoring', 'Performance Analytics', 'Predictive Maintenance', 'Automated Optimization'],
+      path: '/services/novapulse'
+    },
+    {
+      id: 3,
+      title: 'NovaSphere™',
+      subtitle: 'Cloud Infrastructure Platform',
+      description: 'Comprehensive cloud infrastructure platform that provides scalable, secure, and high-performance cloud solutions for enterprise applications.',
+      icon: '🌐',
+      color: 'purple',
+      features: ['Scalable Infrastructure', 'Multi-Cloud Support', 'Security & Compliance', 'High Performance'],
+      path: '/services/novasphere'
+    },
+    {
+      id: 4,
+      title: 'NovaVault™',
+      subtitle: 'Secure Data Management',
+      description: 'Enterprise-grade data management and storage platform that ensures the highest levels of security, compliance, and data integrity.',
+      icon: '🔒',
+      color: 'violet',
+      features: ['Secure Storage', 'Data Encryption', 'Compliance Management', 'Backup & Recovery'],
+      path: '/services/novavault'
+    },
+    {
+      id: 5,
+      title: 'NovaVision™',
+      subtitle: 'Business Intelligence Platform',
+      description: 'Advanced business intelligence and analytics platform that transforms data into actionable insights for strategic decision-making.',
+      icon: '🔮',
+      color: 'cyan',
+      features: ['Data Analytics', 'Predictive Modeling', 'Visualization Tools', 'Real-Time Insights'],
+      path: '/services/novavision'
+    },
+    {
+      id: 6,
+      title: 'NovaMind™',
+      subtitle: 'AI-Powered Decision Engine',
+      description: 'Revolutionary AI-powered decision-making system that leverages machine learning and cognitive computing for unprecedented accuracy.',
+      icon: '🧠',
+      color: 'amber',
+      features: ['Machine Learning', 'Cognitive Computing', 'Natural Language Processing', 'Predictive Analytics'],
+      path: '/services/novamind'
+    },
+    {
+      id: 7,
+      title: 'NovaBoost™',
+      subtitle: 'Performance Optimization Suite',
+      description: 'Comprehensive performance optimization platform that accelerates applications, systems, and business processes for maximum efficiency.',
+      icon: '🚀',
+      color: 'orange',
+      features: ['Performance Analysis', 'Automated Optimization', 'Speed Enhancement', 'Efficiency Monitoring'],
+      path: '/services/novaboost'
+    },
+    {
+      id: 8,
+      title: 'NovaGlobal™',
+      subtitle: 'Worldwide Solutions Platform',
+      description: 'Complete enterprise solution that provides end-to-end services for organizations operating on a global scale.',
+      icon: '🌍',
+      color: 'emerald',
+      features: ['Global Deployment', 'Multi-Region Support', 'Localization', '24/7 Support'],
+      path: '/services/novaglobal'
+    }
+  ];
+
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case 'blue': return 'from-blue-600 to-cyan-600 border-blue-600/20 text-blue-600';
+      case 'green': return 'from-green-600 to-emerald-600 border-green-600/20 text-green-600';
+      case 'purple': return 'from-purple-600 to-violet-600 border-purple-600/20 text-purple-600';
+      case 'amber': return 'from-amber-500 to-orange-500 border-amber-500/20 text-amber-500';
+      case 'cyan': return 'from-cyan-600 to-blue-600 border-cyan-600/20 text-cyan-600';
+      case 'emerald': return 'from-emerald-600 to-green-600 border-emerald-600/20 text-emerald-600';
+      case 'violet': return 'from-violet-600 to-purple-600 border-violet-600/20 text-violet-600';
+      case 'orange': return 'from-orange-500 to-amber-500 border-orange-500/20 text-orange-500';
+      default: return 'from-gray-600 to-gray-700 border-gray-600/20 text-gray-600';
+    }
+  };
+
+  const getGlowClass = (color: string) => {
+    switch (color) {
+      case 'blue': return 'futuristic-glow-blue';
+      case 'green': return 'futuristic-glow-green';
+      case 'purple': return 'futuristic-glow-purple';
+      case 'amber': return 'futuristic-glow-amber';
+      case 'cyan': return 'futuristic-glow-cyan';
+      case 'emerald': return 'futuristic-glow-green';
+      case 'violet': return 'futuristic-glow-purple';
+      case 'orange': return 'futuristic-glow-orange';
+      default: return 'futuristic-glow';
+    }
+  };
+
+  const getBadgeClass = (color: string) => {
+    switch (color) {
+      case 'blue': return 'clearance-badge-safety';
+      case 'green': return 'clearance-badge-security';
+      case 'purple': return 'clearance-badge-trust';
+      case 'amber': return 'clearance-badge-classified';
+      case 'cyan': return 'clearance-badge-safety';
+      case 'emerald': return 'clearance-badge-security';
+      case 'violet': return 'clearance-badge-trust';
+      case 'orange': return 'clearance-badge-classified';
+      default: return 'clearance-badge-classified';
+    }
+  };
+
   return (
-    <section className="py-32 bg-background">
-      <div className="container mx-auto px-6">
-        {/* Clean Section Header */}
-        <div className="text-center mb-24 animate-slide-up">
-          <div className="inline-flex items-center px-6 py-3 rounded-full bg-muted/50 border border-border text-muted-foreground mb-8">
-            <span className="text-sm font-semibold uppercase tracking-wider">Our Capabilities</span>
+    <section className="py-20 classified-gradient-bg relative overflow-hidden">
+      {/* Luminous Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-blue-400/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-bl from-green-400/10 to-emerald-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-gradient-to-tr from-purple-400/10 to-violet-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-10 right-1/4 w-56 h-56 bg-gradient-to-tl from-amber-400/10 to-orange-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="mb-6">
+            <span className="clearance-badge-classified mr-3">ENTERPRISE SOLUTIONS</span>
+            <span className="clearance-badge-safety mr-3">QUANTUM READY</span>
+            <span className="clearance-badge-security">GLOBAL SCALE</span>
           </div>
-          <h2 className="text-6xl md:text-7xl font-light text-foreground mb-8 tracking-tighter">
-            Practice Areas
+          
+          <h2 className="classified-header text-5xl md:text-6xl font-black mb-6">
+            NOVA SERVICES
           </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Comprehensive consulting excellence across seven specialized practice areas, 
-            delivering integrated solutions for complex business challenges.
+          
+          <p className="electric-text text-xl md:text-2xl font-bold mb-8 max-w-4xl mx-auto">
+            Revolutionary Solutions That Illuminate Your Path to Success
+          </p>
+          
+          <p className="monospace-text text-lg text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Harness the power of cutting-edge technology with our comprehensive suite of enterprise solutions. 
+            Each service is designed to nurture growth, foster innovation, and create lasting value.
           </p>
         </div>
 
-        {/* Clean Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-24">
-          {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-border bg-card overflow-hidden animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {services.map((service) => (
+            <Link
+              key={service.id}
+              to={service.path}
+              className={`classified-card p-6 cursor-pointer transition-all duration-500 group ${
+                hoveredService === service.id ? 'scale-105' : 'scale-100'
+              } ${getGlowClass(service.color)}`}
+              onMouseEnter={() => setHoveredService(service.id)}
+              onMouseLeave={() => setHoveredService(null)}
             >
-              <CardHeader className="pb-4">
-                <div className="flex items-start justify-between mb-6">
-                  <div className={`w-16 h-16 rounded-2xl bg-muted flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                    <service.icon className={`h-8 w-8 ${service.color}`} />
-                  </div>
-                  <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all duration-300" />
+              {/* Service Icon */}
+              <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${getColorClasses(service.color)} flex items-center justify-center text-2xl futuristic-glow`}>
+                {service.icon}
+              </div>
+
+              {/* Service Content */}
+              <div className="text-center">
+                <div className="mb-4">
+                  <span className={`${getBadgeClass(service.color)} mb-3 inline-block`}>
+                    {service.color.toUpperCase()}
+                  </span>
+                  <h3 className="classified-text text-xl font-bold mb-2 text-gray-800">
+                    {service.title}
+                  </h3>
+                  <p className="monospace-text text-sm text-gray-600 mb-4">
+                    {service.subtitle}
+                  </p>
                 </div>
-                <CardTitle className="text-2xl font-bold text-foreground mb-2">
-                  {service.title}
-                </CardTitle>
-                <CardDescription className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                  {service.subtitle}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-muted-foreground leading-relaxed mb-6">
+
+                <p className="text-sm text-gray-700 mb-6 leading-relaxed">
                   {service.description}
                 </p>
-                <div className="space-y-3">
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                      {feature}
+
+                {/* Features List */}
+                <div className="space-y-2 mb-6">
+                  {service.features.map((feature, index) => (
+                    <div key={index} className="flex items-center space-x-2">
+                      <div className="status-indicator-classified"></div>
+                      <span className="monospace-text text-xs text-gray-600">{feature}</span>
                     </div>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
+
+                {/* CTA */}
+                <div className="flex items-center justify-center space-x-2 group-hover:space-x-3 transition-all duration-300">
+                  <span className="classified-text text-sm font-bold text-gray-700 group-hover:text-blue-600 transition-colors">
+                    EXPLORE
+                  </span>
+                  <div className="w-4 h-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
+                </div>
+              </div>
+
+              {/* Hover Effects */}
+              {hoveredService === service.id && (
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute top-2 right-2 w-2 h-2 bg-blue-400 rounded-full electric-spark"></div>
+                  <div className="absolute bottom-2 left-2 w-2 h-2 bg-cyan-400 rounded-full electric-spark" style={{ animationDelay: '0.2s' }}></div>
+                  <div className="absolute top-1/2 left-2 w-1 h-1 bg-green-400 rounded-full electric-spark" style={{ animationDelay: '0.4s' }}></div>
+                </div>
+              )}
+            </Link>
           ))}
         </div>
 
-        {/* Clean Call to Action */}
-        <div className="text-center animate-slide-up">
-          <div className="bg-card border border-border text-foreground p-16 rounded-3xl max-w-6xl mx-auto shadow-lg">
-            <h3 className="text-4xl md:text-5xl font-light mb-8">Ready to Transform Your Business?</h3>
-            <p className="text-xl text-muted-foreground mb-12 max-w-4xl mx-auto">
-              Our integrated approach combines deep industry expertise with cutting-edge methodologies 
-              to deliver measurable results for Fortune 500 companies and emerging leaders.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-lg font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                Schedule Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-border text-foreground hover:bg-muted px-12 py-6 text-lg font-medium rounded-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                Download Capabilities Deck
-              </Button>
+        {/* Bottom Connector */}
+        <div className="mt-16">
+          <div className="tesla-connector h-1 w-full max-w-4xl mx-auto rounded-full"></div>
+        </div>
+
+        {/* Trust Indicators */}
+        <div className="mt-16 text-center">
+          <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-50 border border-blue-200">
+              <div className="status-indicator-classified"></div>
+              <span className="classified-text text-sm text-gray-700">QUANTUM SECURE</span>
+            </div>
+            <div className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-green-50 border border-green-200">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="classified-text text-sm text-gray-700">GLOBAL REACH</span>
+            </div>
+            <div className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-purple-50 border border-purple-200">
+              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <span className="classified-text text-sm text-gray-700">24/7 SUPPORT</span>
+            </div>
+            <div className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-cyan-50 border border-cyan-200">
+              <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <span className="classified-text text-sm text-gray-700">ENTERPRISE READY</span>
             </div>
           </div>
         </div>
