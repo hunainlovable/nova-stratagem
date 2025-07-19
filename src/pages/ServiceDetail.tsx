@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Star, TrendingUp, Shield, Zap, Globe, Users, Clock, Target, Building2, Award, BarChart3 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
+import { serviceSEO } from '@/lib/seo';
 
 interface ServiceData {
   id: string;
@@ -618,8 +620,16 @@ const ServiceDetail: React.FC = () => {
     );
   }
 
+  const seoData = serviceId && serviceSEO[serviceId] ? serviceSEO[serviceId] : null;
+
   return (
     <div className="min-h-screen bg-white">
+      {seoData && (
+        <SEOHead 
+          seo={seoData} 
+          structuredData={seoData.structuredData}
+        />
+      )}
       <Navigation />
       
       <div className="pt-32">

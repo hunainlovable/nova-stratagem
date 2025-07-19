@@ -36,6 +36,171 @@ export const defaultSEO: SEOData = {
   canonicalUrl: 'https://novastratagem.com'
 };
 
+export const pageSEO: Record<string, SEOData> = {
+  home: {
+    title: 'Nova Stratagem | Leading Enterprise Technology Solutions | Houston, Texas',
+    description: 'Transform your business with Nova Stratagem, Houston\'s premier enterprise technology solutions provider. Quantum intelligence, cybersecurity, and digital transformation services for enterprises across the United States.',
+    keywords: [
+      'enterprise technology solutions',
+      'Houston technology company',
+      'Texas business consulting',
+      'quantum intelligence platform',
+      'enterprise cybersecurity',
+      'digital transformation Houston',
+      'business technology solutions',
+      'Houston IT consulting',
+      'enterprise software Houston',
+      'technology consulting Texas',
+      'AI solutions Houston',
+      'cloud infrastructure Texas'
+    ],
+    canonicalUrl: 'https://novastratagem.com',
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nova Stratagem",
+      "url": "https://novastratagem.com",
+      "logo": "https://novastratagem.com/logo.png",
+      "description": "Leading enterprise technology solutions provider in Houston, Texas",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Houston",
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      },
+      "foundedDate": "2024",
+      "founder": {
+        "@type": "Person",
+        "name": "Hunain Qureshi"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "areaServed": "US",
+        "availableLanguage": "English"
+      }
+    }
+  },
+  services: {
+    title: 'Enterprise Consulting Services | Strategy, Operations & Technology | Nova Stratagem',
+    description: 'Comprehensive enterprise consulting services in Houston. Strategy consulting, operations optimization, and technology transformation. Expert consultants from top-tier firms serving businesses across Texas and the United States.',
+    keywords: [
+      'enterprise consulting Houston',
+      'strategy consulting Texas',
+      'operations consulting',
+      'technology consulting Houston',
+      'business transformation',
+      'management consulting',
+      'Houston business consulting',
+      'enterprise strategy',
+      'digital transformation consulting',
+      'operational excellence',
+      'business optimization',
+      'consulting services Texas'
+    ],
+    canonicalUrl: 'https://novastratagem.com/services'
+  },
+  team: {
+    title: 'Leadership Team | World-Class Experts | Nova Stratagem Houston',
+    description: 'Meet Nova Stratagem\'s world-class leadership team. Experts from McKinsey, Google, Goldman Sachs, and leading academic institutions. Founded by Hunain Qureshi, delivering exceptional consulting services in Houston and across the United States.',
+    keywords: [
+      'Nova Stratagem team',
+      'Hunain Qureshi founder',
+      'Houston consulting experts',
+      'enterprise consulting leadership',
+      'strategy consulting team',
+      'technology consulting experts',
+      'management consulting Houston',
+      'business consulting team',
+      'expert consultants Texas',
+      'consulting firm leadership',
+      'enterprise advisory team',
+      'business transformation experts'
+    ],
+    canonicalUrl: 'https://novastratagem.com/team',
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nova Stratagem",
+      "foundedDate": "2024",
+      "founder": {
+        "@type": "Person",
+        "name": "Hunain Qureshi",
+        "jobTitle": "Founder & CEO"
+      },
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "Hunain Qureshi",
+          "jobTitle": "Founder & CEO"
+        },
+        {
+          "@type": "Person", 
+          "name": "Dr. Sarah Chen",
+          "jobTitle": "Managing Director & CEO"
+        }
+      ]
+    }
+  },
+  contact: {
+    title: 'Contact Nova Stratagem | Houston Enterprise Technology Solutions',
+    description: 'Get in touch with Nova Stratagem for enterprise technology consulting. Based in Houston, Texas, serving businesses across the United States. Schedule your consultation today.',
+    keywords: [
+      'contact Nova Stratagem',
+      'Houston technology consulting',
+      'enterprise consulting contact',
+      'business consulting Houston',
+      'technology solutions contact',
+      'consulting services inquiry',
+      'Houston business consulting',
+      'enterprise solutions contact',
+      'technology transformation contact',
+      'consulting firm Houston',
+      'business advisory contact',
+      'strategic consulting contact'
+    ],
+    canonicalUrl: 'https://novastratagem.com/contact'
+  },
+  insights: {
+    title: 'Business Insights & Thought Leadership | Nova Stratagem Houston',
+    description: 'Discover cutting-edge business insights and thought leadership from Nova Stratagem\'s experts. Latest trends in enterprise technology, strategy, and digital transformation from Houston\'s leading consulting firm.',
+    keywords: [
+      'business insights Houston',
+      'enterprise technology trends',
+      'consulting thought leadership',
+      'business strategy insights',
+      'digital transformation trends',
+      'technology consulting insights',
+      'enterprise consulting blog',
+      'business innovation Houston',
+      'strategic insights Texas',
+      'consulting expertise',
+      'business transformation insights',
+      'technology leadership'
+    ],
+    canonicalUrl: 'https://novastratagem.com/insights'
+  },
+  caseStudies: {
+    title: 'Case Studies | Success Stories | Nova Stratagem Houston Consulting',
+    description: 'Explore Nova Stratagem\'s success stories and case studies. Real results from enterprise technology transformations, strategy implementations, and operational improvements for Houston and Texas businesses.',
+    keywords: [
+      'consulting case studies',
+      'enterprise transformation results',
+      'Houston business success stories',
+      'technology consulting results',
+      'strategy consulting outcomes',
+      'business transformation case studies',
+      'consulting success stories',
+      'enterprise solutions results',
+      'digital transformation case studies',
+      'operational improvement results',
+      'consulting ROI examples',
+      'business consulting outcomes'
+    ],
+    canonicalUrl: 'https://novastratagem.com/case-studies'
+  }
+};
+
 export const serviceSEO: Record<string, SEOData> = {
   novacore: {
     title: 'NovaCore™ Quantum Intelligence Platform | Houston AI Solutions | Nova Stratagem',

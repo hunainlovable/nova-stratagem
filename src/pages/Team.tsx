@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
+import { pageSEO } from '@/lib/seo';
 
 const teamMembers = [
   {
@@ -81,6 +83,10 @@ const teamMembers = [
 const Team = () => {
   return (
     <div className="min-h-screen bg-slate-50">
+      <SEOHead 
+        seo={pageSEO.team} 
+        structuredData={pageSEO.team.structuredData}
+      />
       <Navigation />
       
       <div className="pt-32 pb-16">
