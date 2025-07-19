@@ -149,7 +149,7 @@ const Navigation: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="clearance-badge-classified">TOP SECRET</span>
+              <span className="clearance-badge-ai">AI POWERED</span>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -9,6 +10,16 @@ const Hero: React.FC = () => {
   const [mouseVelocity, setMouseVelocity] = useState({ x: 0, y: 0 });
   const [lastMousePosition, setLastMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to next section
+  const handleExploreClick = () => {
+    if (heroRef.current) {
+      const nextSection = heroRef.current.nextElementSibling as HTMLElement | null;
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   useEffect(() => {
     let animationFrameId: number;
@@ -62,6 +73,10 @@ const Hero: React.FC = () => {
     { id: 7, title: 'NovaBoost™', subtitle: 'Performance Optimization', color: 'from-orange-500 to-amber-500', delay: 0.6 },
     { id: 8, title: 'NovaGlobal™', subtitle: 'Worldwide Solutions', color: 'from-emerald-600 to-green-600', delay: 0.7 },
   ];
+
+  // Helper to create service URL slug
+  const getServiceSlug = (title: string) =>
+    '/services/' + title.toLowerCase().replace(/™/g, '').replace(/\s+/g, '').replace(/[^a-z0-9-]/g, '');
 
   // Calculate dynamic effects based on mouse velocity
   const mouseSpeed = Math.sqrt(mouseVelocity.x ** 2 + mouseVelocity.y ** 2);
@@ -131,10 +146,16 @@ const Hero: React.FC = () => {
             <span className="clearance-badge-security text-xs">UNITED STATES</span>
           </div>
           
-          <h1 className="classified-header text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-none tracking-tight" style={{
-            transform: `translateY(${scrollY * 0.05}px)`,
-            textShadow: `0 0 30px rgba(59, 130, 246, 0.2)`
-          }}>
+          <motion.h1 
+            className="classified-header text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-none tracking-tight" 
+            style={{
+              transform: `translateY(${scrollY * 0.05}px)`,
+              textShadow: `0 0 30px rgba(59, 130, 246, 0.2)`
+            }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
             NOVA
             <span className="block mt-2" style={{
               background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 25%, #8b5cf6 50%, #10b981 75%, #f59e0b 100%)',
@@ -144,22 +165,34 @@ const Hero: React.FC = () => {
             }}>
               STRATAGEM
             </span>
-          </h1>
+          </motion.h1>
           
-          <p className="electric-text text-2xl md:text-3xl lg:text-4xl font-bold mb-8 max-w-4xl mx-auto leading-tight" style={{
-            transform: `translateY(${scrollY * 0.03}px)`,
-            textShadow: `0 0 20px rgba(59, 130, 246, 0.3)`
-          }}>
+          <motion.p 
+            className="electric-text text-2xl md:text-3xl lg:text-4xl font-bold mb-8 max-w-4xl mx-auto leading-tight" 
+            style={{
+              transform: `translateY(${scrollY * 0.03}px)`,
+              textShadow: `0 0 20px rgba(59, 130, 246, 0.3)`
+            }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
             Enterprise Technology Solutions
-          </p>
+          </motion.p>
           
-          <p className="monospace-text text-lg md:text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed" style={{
-            transform: `translateY(${scrollY * 0.02}px)`
-          }}>
+          <motion.p 
+            className="monospace-text text-lg md:text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed" 
+            style={{
+              transform: `translateY(${scrollY * 0.02}px)`
+            }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
             Leading provider of advanced enterprise solutions in Houston, Texas. 
             Delivering quantum intelligence, cybersecurity, and digital transformation 
             services for forward-thinking organizations across the United States.
-          </p>
+          </motion.p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link 
@@ -186,8 +219,9 @@ const Hero: React.FC = () => {
         {/* Professional Service Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
           {tiles.map((tile, index) => (
-            <div
+            <Link
               key={tile.id}
+              to={getServiceSlug(tile.title)}
               className={`
                 classified-card p-6 cursor-pointer transition-all duration-500 electric-tile
                 ${hoveredTile === tile.id ? 'scale-105 z-20' : 'scale-100'}
@@ -231,7 +265,7 @@ const Hero: React.FC = () => {
                   <span className="text-xs text-gray-500 monospace-text font-bold">READY</span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -245,10 +279,16 @@ const Hero: React.FC = () => {
 
       {/* Professional Status Bar */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="classified-panel px-8 py-4 flex items-center space-x-8" style={{
-          boxShadow: '0 15px 30px rgba(0, 0, 0, 0.08), 0 0 20px rgba(59, 130, 246, 0.15)',
-          minWidth: 'max-content'
-        }}>
+        <motion.div 
+          className="classified-panel px-8 py-4 flex items-center space-x-8" 
+          style={{
+            boxShadow: '0 15px 30px rgba(0, 0, 0, 0.08), 0 0 20px rgba(59, 130, 246, 0.15)',
+            minWidth: 'max-content'
+          }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
           <div className="flex items-center space-x-3">
             <div className="status-indicator-classified"></div>
             <span className="classified-text text-sm text-gray-700 font-bold whitespace-nowrap">SYSTEM ACTIVE</span>
@@ -263,16 +303,25 @@ const Hero: React.FC = () => {
             <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse flex-shrink-0" style={{ animationDelay: '0.5s' }}></div>
             <span className="classified-text text-sm text-gray-700 font-bold whitespace-nowrap">ENTERPRISE READY</span>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Professional Scroll Indicator */}
-      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-20">
+      {/* Professional Scroll Indicator - moved 50px below status bar */}
+      <motion.button
+        type="button"
+        onClick={handleExploreClick}
+        className="absolute left-1/2 transform -translate-x-1/2 z-20 focus:outline-none group"
+        style={{ bottom: '50px' }}
+        aria-label="Scroll to next section"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+      >
         <div className="flex flex-col items-center space-y-1">
-          <span className="classified-text text-xs text-gray-500 font-bold tracking-wider">EXPLORE</span>
-          <div className="w-0.5 h-8 bg-gradient-to-b from-blue-600 to-transparent animate-pulse"></div>
+          <span className="classified-text text-xs text-gray-500 font-bold tracking-wider group-hover:text-blue-600 transition">EXPLORE</span>
+          <div className="w-0.5 h-10 bg-gradient-to-b from-blue-600 to-transparent animate-pulse"></div>
         </div>
-      </div>
+      </motion.button>
     </div>
   );
 };
