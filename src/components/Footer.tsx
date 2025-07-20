@@ -7,12 +7,12 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const location = useLocation();
-  const isAdminDashboard = location.pathname === '/admin';
+  const isDashboardPage = location.pathname === '/admin' || location.pathname.startsWith('/dashboard/');
   
   // Dynamic text colors based on page
-  const textColor = isAdminDashboard ? 'text-white' : 'text-black';
-  const secondaryTextColor = isAdminDashboard ? 'text-slate-300' : 'text-gray-700';
-  const linkHoverColor = isAdminDashboard ? 'hover:text-blue-400' : 'hover:text-blue-600';
+  const textColor = isDashboardPage ? 'text-white' : 'text-black';
+  const secondaryTextColor = isDashboardPage ? 'text-slate-300' : 'text-gray-700';
+  const linkHoverColor = isDashboardPage ? 'hover:text-blue-400' : 'hover:text-blue-600';
   
   return (
     <footer className="relative bg-white overflow-hidden classified-gradient-bg">
@@ -165,7 +165,7 @@ const Footer: React.FC = () => {
                   <Input 
                     type="email"
                     placeholder="Enter your email"
-                    className={`classified-card border-black/20 bg-transparent ${isAdminDashboard ? 'text-white placeholder-gray-300' : 'text-black placeholder-gray-500'} focus:border-black/40 focus:ring-black/40 text-sm monospace-text`}
+                    className={`classified-card border-black/20 bg-transparent ${isDashboardPage ? 'text-white placeholder-gray-300' : 'text-black placeholder-gray-500'} focus:border-black/40 focus:ring-black/40 text-sm monospace-text`}
                   />
                   <Button className="btn-safety px-4 py-2 text-sm font-black">
                     <Mail className="w-4 h-4" />
@@ -180,20 +180,20 @@ const Footer: React.FC = () => {
         <div className="py-8 border-t-2 border-black/10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="flex items-center space-x-3">
-              <CheckCircle className={`w-5 h-5 ${isAdminDashboard ? 'text-blue-400' : 'text-blue-600'}`} />
-              <span className={`${isAdminDashboard ? 'text-blue-400' : 'text-blue-600'} font-semibold monospace-text text-sm`}>SAFE & SECURE</span>
+              <CheckCircle className={`w-5 h-5 ${isDashboardPage ? 'text-blue-400' : 'text-blue-600'}`} />
+              <span className={`${isDashboardPage ? 'text-blue-400' : 'text-blue-600'} font-semibold monospace-text text-sm`}>SAFE & SECURE</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className={`w-5 h-5 ${isAdminDashboard ? 'text-green-400' : 'text-green-600'}`} />
-              <span className={`${isAdminDashboard ? 'text-green-400' : 'text-green-600'} font-semibold monospace-text text-sm`}>ENTERPRISE GRADE</span>
+              <CheckCircle className={`w-5 h-5 ${isDashboardPage ? 'text-green-400' : 'text-green-600'}`} />
+              <span className={`${isDashboardPage ? 'text-green-400' : 'text-green-600'} font-semibold monospace-text text-sm`}>ENTERPRISE GRADE</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className={`w-5 h-5 ${isAdminDashboard ? 'text-navy-400' : 'text-navy-600'}`} />
-              <span className={`${isAdminDashboard ? 'text-navy-400' : 'text-navy-600'} font-semibold monospace-text text-sm`}>TRUSTED BY 500+</span>
+              <CheckCircle className={`w-5 h-5 ${isDashboardPage ? 'text-navy-400' : 'text-navy-600'}`} />
+              <span className={`${isDashboardPage ? 'text-navy-400' : 'text-navy-600'} font-semibold monospace-text text-sm`}>TRUSTED BY 500+</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className={`w-5 h-5 ${isAdminDashboard ? 'text-slate-400' : 'text-gray-600'}`} />
-              <span className={`${isAdminDashboard ? 'text-slate-400' : 'text-gray-600'} font-semibold monospace-text text-sm`}>24/7 SUPPORT</span>
+              <CheckCircle className={`w-5 h-5 ${isDashboardPage ? 'text-slate-400' : 'text-gray-600'}`} />
+              <span className={`${isDashboardPage ? 'text-slate-400' : 'text-gray-600'} font-semibold monospace-text text-sm`}>24/7 SUPPORT</span>
             </div>
           </div>
         </div>
@@ -206,7 +206,7 @@ const Footer: React.FC = () => {
                 © 2024 NOVA STRATAGEM. ALL RIGHTS RESERVED.
               </span>
               <div className="flex items-center space-x-2">
-                <Shield className={`w-4 h-4 ${isAdminDashboard ? 'text-blue-400' : 'text-blue-600'}`} />
+                <Shield className={`w-4 h-4 ${isDashboardPage ? 'text-blue-400' : 'text-blue-600'}`} />
                 <span className={`${secondaryTextColor} text-sm monospace-text`}>ENTERPRISE SECURITY</span>
               </div>
             </div>
@@ -222,7 +222,7 @@ const Footer: React.FC = () => {
                 SECURITY
               </Link>
               <div className="flex items-center space-x-2">
-                <Lock className={`w-4 h-4 ${isAdminDashboard ? 'text-green-400' : 'text-green-600'}`} />
+                <Lock className={`w-4 h-4 ${isDashboardPage ? 'text-green-400' : 'text-green-600'}`} />
                 <span className={`${secondaryTextColor} text-sm monospace-text`}>SSL SECURED</span>
               </div>
             </div>
