@@ -3,9 +3,17 @@ import React from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Mail, Phone, MapPin, Clock, Shield, Lock, Eye, Globe, Zap, Users, CheckCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  const location = useLocation();
+  const isDashboardPage = location.pathname === '/admin' || location.pathname.startsWith('/dashboard/');
+  
+  // Dynamic text colors based on page
+  const textColor = isDashboardPage ? 'text-white' : 'text-black';
+  const secondaryTextColor = isDashboardPage ? 'text-slate-300' : 'text-gray-700';
+  const linkHoverColor = isDashboardPage ? 'hover:text-blue-400' : 'hover:text-blue-600';
+  
   return (
     <footer className="relative bg-white overflow-hidden classified-gradient-bg">
       {/* Background Effects */}
@@ -27,9 +35,9 @@ const Footer: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center futuristic-glow-blue">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-black text-black classified-header">NOVA STRATAGEM</h3>
+                <h3 className={`text-2xl font-black ${textColor} classified-header`}>NOVA STRATAGEM</h3>
               </div>
-              <p className="text-gray-700 leading-relaxed mb-6 monospace-text">
+              <p className={`${isDashboardPage ? 'text-white' : 'text-gray-700'} leading-relaxed mb-6 monospace-text`}>
                 Empowering organizations with cutting-edge technology solutions that drive innovation, 
                 enhance security, and create sustainable competitive advantages.
               </p>
@@ -48,45 +56,45 @@ const Footer: React.FC = () => {
 
             {/* Services */}
             <div>
-              <h4 className="text-lg font-black text-black mb-6 classified-header">SERVICES</h4>
+              <h4 className={`text-lg font-black ${textColor} mb-6 classified-header`}>SERVICES</h4>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/services/novashield" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/services/novashield" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     NOVASHIELD™
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/novapulse" className="text-gray-700 hover:text-green-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/services/novapulse" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     NOVAPULSE™
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/novasphere" className="text-gray-700 hover:text-navy-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/services/novasphere" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     NOVASPHERE™
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/novavault" className="text-gray-700 hover:text-green-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/services/novavault" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     NOVAVAULT™
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/novavision" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/services/novavision" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     NOVAVISION™
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/novamind" className="text-gray-700 hover:text-green-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/services/novamind" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     NOVAMIND™
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/novaboost" className="text-gray-700 hover:text-navy-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/services/novaboost" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     NOVABOOST™
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/novaglobal" className="text-gray-700 hover:text-navy-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/services/novaglobal" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     NOVAGLOBAL™
                   </Link>
                 </li>
@@ -95,35 +103,35 @@ const Footer: React.FC = () => {
 
             {/* Company */}
             <div>
-              <h4 className="text-lg font-black text-black mb-6 classified-header">COMPANY</h4>
+              <h4 className={`text-lg font-black ${textColor} mb-6 classified-header`}>COMPANY</h4>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/about" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/about" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     ABOUT US
                   </Link>
                 </li>
                 <li>
-                  <Link to="/team" className="text-gray-700 hover:text-navy-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/team" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     OUR TEAM
                   </Link>
                 </li>
                 <li>
-                  <Link to="/careers" className="text-gray-700 hover:text-green-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/careers" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     CAREERS
                   </Link>
                 </li>
                 <li>
-                  <Link to="/insights" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/insights" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     INSIGHTS
                   </Link>
                 </li>
                 <li>
-                  <Link to="/case-studies" className="text-gray-700 hover:text-navy-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/case-studies" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     CASE STUDIES
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="text-gray-700 hover:text-green-600 transition-colors duration-300 monospace-text text-sm">
+                  <Link to="/contact" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
                     CONTACT
                   </Link>
                 </li>
@@ -132,32 +140,32 @@ const Footer: React.FC = () => {
 
             {/* Contact & Newsletter */}
             <div>
-              <h4 className="text-lg font-black text-black mb-6 classified-header">STAY CONNECTED</h4>
+              <h4 className={`text-lg font-black ${textColor} mb-6 classified-header`}>STAY CONNECTED</h4>
               <div className="space-y-4 mb-6">
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center futuristic-glow-blue">
                     <Mail className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-gray-700 text-sm monospace-text">contact@novastratagem.com</span>
+                  <span className={`${secondaryTextColor} text-sm monospace-text`}>contact@novastratagem.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center futuristic-glow-green">
                     <Phone className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-gray-700 text-sm monospace-text">+1 (555) 123-4567</span>
+                  <span className={`${secondaryTextColor} text-sm monospace-text`}>+1 (555) 123-4567</span>
                 </div>
               </div>
               
               <div className="space-y-3">
-                <h5 className="text-sm font-black text-black monospace-text">NEWSLETTER</h5>
-                <p className="text-gray-700 text-sm mb-3 monospace-text">
+                <h5 className={`text-sm font-black ${textColor} monospace-text`}>NEWSLETTER</h5>
+                <p className={`${secondaryTextColor} text-sm mb-3 monospace-text`}>
                   Stay updated with our latest insights and innovations.
                 </p>
                 <div className="flex space-x-2">
                   <Input 
                     type="email"
                     placeholder="Enter your email"
-                    className="classified-card border-black/20 bg-transparent text-black placeholder-gray-500 focus:border-black/40 focus:ring-black/40 text-sm monospace-text"
+                    className={`classified-card border-black/20 bg-transparent ${isDashboardPage ? 'text-white placeholder-gray-300' : 'text-black placeholder-gray-500'} focus:border-black/40 focus:ring-black/40 text-sm monospace-text`}
                   />
                   <Button className="btn-safety px-4 py-2 text-sm font-black">
                     <Mail className="w-4 h-4" />
@@ -172,20 +180,20 @@ const Footer: React.FC = () => {
         <div className="py-8 border-t-2 border-black/10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-blue-600" />
-              <span className="text-blue-600 font-semibold monospace-text text-sm">SAFE & SECURE</span>
+              <CheckCircle className={`w-5 h-5 ${isDashboardPage ? 'text-blue-400' : 'text-blue-600'}`} />
+              <span className={`${isDashboardPage ? 'text-blue-400' : 'text-blue-600'} font-semibold monospace-text text-sm`}>SAFE & SECURE</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-green-600" />
-              <span className="text-green-600 font-semibold monospace-text text-sm">ENTERPRISE GRADE</span>
+              <CheckCircle className={`w-5 h-5 ${isDashboardPage ? 'text-green-400' : 'text-green-600'}`} />
+              <span className={`${isDashboardPage ? 'text-green-400' : 'text-green-600'} font-semibold monospace-text text-sm`}>ENTERPRISE GRADE</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-navy-600" />
-              <span className="text-navy-600 font-semibold monospace-text text-sm">TRUSTED BY 500+</span>
+              <CheckCircle className={`w-5 h-5 ${isDashboardPage ? 'text-navy-400' : 'text-navy-600'}`} />
+              <span className={`${isDashboardPage ? 'text-navy-400' : 'text-navy-600'} font-semibold monospace-text text-sm`}>TRUSTED BY 500+</span>
             </div>
             <div className="flex items-center space-x-3">
-              <CheckCircle className="w-5 h-5 text-gray-600" />
-              <span className="text-gray-600 font-semibold monospace-text text-sm">24/7 SUPPORT</span>
+              <CheckCircle className={`w-5 h-5 ${isDashboardPage ? 'text-slate-400' : 'text-gray-600'}`} />
+              <span className={`${isDashboardPage ? 'text-slate-400' : 'text-gray-600'} font-semibold monospace-text text-sm`}>24/7 SUPPORT</span>
             </div>
           </div>
         </div>
@@ -194,28 +202,28 @@ const Footer: React.FC = () => {
         <div className="border-t-2 border-black/10 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-6">
-              <span className="text-gray-700 text-sm monospace-text">
+              <span className={`${secondaryTextColor} text-sm monospace-text`}>
                 © 2024 NOVA STRATAGEM. ALL RIGHTS RESERVED.
               </span>
               <div className="flex items-center space-x-2">
-                <Shield className="w-4 h-4 text-blue-600" />
-                <span className="text-gray-700 text-sm monospace-text">ENTERPRISE SECURITY</span>
+                <Shield className={`w-4 h-4 ${isDashboardPage ? 'text-blue-400' : 'text-blue-600'}`} />
+                <span className={`${secondaryTextColor} text-sm monospace-text`}>ENTERPRISE SECURITY</span>
               </div>
             </div>
             
             <div className="flex items-center space-x-6">
-              <Link to="/privacy" className="text-gray-700 hover:text-blue-600 transition-colors duration-300 text-sm monospace-text">
+              <Link to="/privacy" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 text-sm monospace-text`}>
                 PRIVACY POLICY
               </Link>
-              <Link to="/terms" className="text-gray-700 hover:text-navy-600 transition-colors duration-300 text-sm monospace-text">
+              <Link to="/terms" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 text-sm monospace-text`}>
                 TERMS OF SERVICE
               </Link>
-              <Link to="/security" className="text-gray-700 hover:text-green-600 transition-colors duration-300 text-sm monospace-text">
+              <Link to="/security" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 text-sm monospace-text`}>
                 SECURITY
               </Link>
               <div className="flex items-center space-x-2">
-                <Lock className="w-4 h-4 text-green-600" />
-                <span className="text-gray-700 text-sm monospace-text">SSL SECURED</span>
+                <Lock className={`w-4 h-4 ${isDashboardPage ? 'text-green-400' : 'text-green-600'}`} />
+                <span className={`${secondaryTextColor} text-sm monospace-text`}>SSL SECURED</span>
               </div>
             </div>
           </div>
