@@ -10,9 +10,9 @@ const Footer: React.FC = () => {
   const isDashboardPage = location.pathname === '/admin' || location.pathname.startsWith('/dashboard/');
   
   // Dynamic text colors based on page
-  const textColor = isDashboardPage ? 'text-white' : 'text-black';
-  const secondaryTextColor = isDashboardPage ? 'text-slate-300' : 'text-gray-700';
-  const linkHoverColor = isDashboardPage ? 'hover:text-blue-400' : 'hover:text-blue-600';
+  const textColor = isDashboardPage ? 'text-white !text-white' : 'text-black';
+  const secondaryTextColor = isDashboardPage ? 'text-white !text-white' : 'text-gray-700';
+  const linkHoverColor = isDashboardPage ? 'hover:text-blue-200' : 'hover:text-blue-600';
   
   return (
     <footer className="relative bg-white overflow-hidden classified-gradient-bg">
@@ -35,9 +35,9 @@ const Footer: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center futuristic-glow-blue">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
-                <h3 className={`text-2xl font-black ${textColor} classified-header`}>NOVA STRATAGEM</h3>
+                <h3 className={`text-2xl font-black classified-header ${isDashboardPage ? '!text-white drop-shadow-footer-title' : textColor}`}>NOVA STRATAGEM</h3>
               </div>
-              <p className={`${isDashboardPage ? 'text-white' : 'text-gray-700'} leading-relaxed mb-6 monospace-text`}>
+              <p className={`${isDashboardPage ? 'text-white !text-white' : 'text-gray-700'} leading-relaxed mb-6 monospace-text`}>
                 Empowering organizations with cutting-edge technology solutions that drive innovation, 
                 enhance security, and create sustainable competitive advantages.
               </p>
@@ -56,10 +56,10 @@ const Footer: React.FC = () => {
 
             {/* Services */}
             <div>
-              <h4 className={`text-lg font-black ${textColor} mb-6 classified-header`}>SERVICES</h4>
+              <h4 className={`text-lg font-extrabold classified-header mb-6 ${isDashboardPage ? '!text-white drop-shadow-footer-title' : textColor}`}>SERVICES</h4>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/services/novashield" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
+                  <Link to="/services/novashield" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm !text-white`}>
                     NOVASHIELD™
                   </Link>
                 </li>
@@ -103,7 +103,7 @@ const Footer: React.FC = () => {
 
             {/* Company */}
             <div>
-              <h4 className={`text-lg font-black ${textColor} mb-6 classified-header`}>COMPANY</h4>
+              <h4 className={`text-lg font-extrabold classified-header mb-6 ${isDashboardPage ? '!text-white drop-shadow-footer-title' : textColor}`}>COMPANY</h4>
               <ul className="space-y-3">
                 <li>
                   <Link to="/about" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 monospace-text text-sm`}>
@@ -140,13 +140,13 @@ const Footer: React.FC = () => {
 
             {/* Contact & Newsletter */}
             <div>
-              <h4 className={`text-lg font-black ${textColor} mb-6 classified-header`}>STAY CONNECTED</h4>
+              <h4 className={`text-lg font-extrabold classified-header mb-6 ${isDashboardPage ? '!text-white drop-shadow-footer-title' : textColor}`}>STAY CONNECTED</h4>
               <div className="space-y-4 mb-6">
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center futuristic-glow-blue">
                     <Mail className="w-4 h-4 text-white" />
                   </div>
-                  <span className={`${secondaryTextColor} text-sm monospace-text`}>contact@novastratagem.com</span>
+                  <span className={`${secondaryTextColor} text-sm monospace-text !text-white`}>contact@novastratagem.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center futuristic-glow-green">
@@ -157,15 +157,15 @@ const Footer: React.FC = () => {
               </div>
               
               <div className="space-y-3">
-                <h5 className={`text-sm font-black ${textColor} monospace-text`}>NEWSLETTER</h5>
-                <p className={`${secondaryTextColor} text-sm mb-3 monospace-text`}>
+                <h5 className={`text-sm font-extrabold monospace-text ${isDashboardPage ? '!text-white drop-shadow-footer-title' : textColor}`}>NEWSLETTER</h5>
+                <p className={`${secondaryTextColor} text-sm mb-3 monospace-text !text-white`}>
                   Stay updated with our latest insights and innovations.
                 </p>
                 <div className="flex space-x-2">
                   <Input 
                     type="email"
                     placeholder="Enter your email"
-                    className={`classified-card border-black/20 bg-transparent ${isDashboardPage ? 'text-white placeholder-gray-300' : 'text-black placeholder-gray-500'} focus:border-black/40 focus:ring-black/40 text-sm monospace-text`}
+                    className={`classified-card border-black/20 bg-transparent ${isDashboardPage ? 'text-white !text-white placeholder-white !placeholder-white' : 'text-black placeholder-gray-500'} focus:border-black/40 focus:ring-black/40 text-sm monospace-text`}
                   />
                   <Button className="btn-safety px-4 py-2 text-sm font-black">
                     <Mail className="w-4 h-4" />
@@ -202,7 +202,7 @@ const Footer: React.FC = () => {
         <div className="border-t-2 border-black/10 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-6">
-              <span className={`${secondaryTextColor} text-sm monospace-text`}>
+              <span className={`${secondaryTextColor} text-sm monospace-text !text-white`}>
                 © 2024 NOVA STRATAGEM. ALL RIGHTS RESERVED.
               </span>
               <div className="flex items-center space-x-2">
@@ -212,13 +212,13 @@ const Footer: React.FC = () => {
             </div>
             
             <div className="flex items-center space-x-6">
-              <Link to="/privacy" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 text-sm monospace-text`}>
+              <Link to="/privacy" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 text-sm monospace-text !text-white`}>
                 PRIVACY POLICY
               </Link>
               <Link to="/terms" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 text-sm monospace-text`}>
                 TERMS OF SERVICE
               </Link>
-              <Link to="/security" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 text-sm monospace-text`}>
+              <Link to="/security" className={`${secondaryTextColor} ${linkHoverColor} transition-colors duration-300 text-sm monospace-text !text-white`}>
                 SECURITY
               </Link>
               <div className="flex items-center space-x-2">
@@ -232,6 +232,11 @@ const Footer: React.FC = () => {
 
       {/* Section Connector */}
       <div className="classified-connector absolute top-0 left-0 right-0 h-2"></div>
+      <style>{`
+        .drop-shadow-footer-title {
+          text-shadow: 0 2px 16px rgba(255,255,255,0.25), 0 1px 2px rgba(0,0,0,0.12);
+        }
+      `}</style>
     </footer>
   );
 };

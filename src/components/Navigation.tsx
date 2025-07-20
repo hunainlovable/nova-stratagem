@@ -70,6 +70,9 @@ const Navigation: React.FC = () => {
                 }`}></div>
               </Link>
             ))}
+            <Link to="/server-builder" className="font-bold text-white hover:text-blue-400 transition-colors duration-200 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500/20 to-purple-500/20 hover:from-blue-500/40 hover:to-purple-500/40 ml-2">
+              Server Builder
+            </Link>
           </div>
 
           {/* CTA Button */}

@@ -241,197 +241,221 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         {/* System Overview Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-            <CardContent className="p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/80 via-slate-900/80 to-slate-800/90 border-2 border-slate-700/60 hover:border-cyan-400/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[0_8px_40px_0_rgba(14,165,233,0.25)] group">
+            {/* Luxury Accent Bar */}
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-80 group-hover:opacity-100 transition-all duration-300" />
+            <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-slate-400 text-sm font-mono">OPERATIONAL SERVICES</p>
-                  <p className="text-3xl font-bold text-green-400">{metrics.operationalServices}/{metrics.totalServices}</p>
+                  <p className="text-slate-300 text-sm font-mono" title="Number of services currently operational">OPERATIONAL SERVICES</p>
+                  <p className="text-3xl font-extrabold text-green-300 drop-shadow-lg">{metrics.operationalServices}/{metrics.totalServices}</p>
                 </div>
-                <CheckCircle className="w-8 h-8 text-green-400" />
+                <CheckCircle className="w-10 h-10 text-green-300 animate-pulse group-hover:scale-110 transition-transform duration-300" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-            <CardContent className="p-6">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/80 via-slate-900/80 to-slate-800/90 border-2 border-slate-700/60 hover:border-cyan-400/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[0_8px_40px_0_rgba(14,165,233,0.25)] group">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-80 group-hover:opacity-100 transition-all duration-300" />
+            <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-slate-400 text-sm font-mono">TOTAL USERS</p>
-                  <p className="text-3xl font-bold text-blue-400">{metrics.totalUsers.toLocaleString()}</p>
+                  <p className="text-slate-300 text-sm font-mono" title="Total number of users across all services">TOTAL USERS</p>
+                  <p className="text-3xl font-extrabold text-blue-300 drop-shadow-lg">{metrics.totalUsers.toLocaleString()}</p>
                 </div>
-                <Users className="w-8 h-8 text-blue-400" />
+                <Users className="w-10 h-10 text-blue-300 animate-pulse group-hover:scale-110 transition-transform duration-300" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-            <CardContent className="p-6">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/80 via-slate-900/80 to-slate-800/90 border-2 border-slate-700/60 hover:border-cyan-400/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[0_8px_40px_0_rgba(14,165,233,0.25)] group">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-80 group-hover:opacity-100 transition-all duration-300" />
+            <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-slate-400 text-sm font-mono">AVG PERFORMANCE</p>
-                  <p className="text-3xl font-bold text-purple-400">{metrics.averagePerformance.toFixed(1)}%</p>
+                  <p className="text-slate-300 text-sm font-mono" title="Average performance across all services">AVG PERFORMANCE</p>
+                  <p className="text-3xl font-extrabold text-purple-300 drop-shadow-lg">{metrics.averagePerformance.toFixed(1)}%</p>
                 </div>
-                <TrendingUp className="w-8 h-8 text-purple-400" />
+                <TrendingUp className="w-10 h-10 text-purple-300 animate-pulse group-hover:scale-110 transition-transform duration-300" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-            <CardContent className="p-6">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/80 via-slate-900/80 to-slate-800/90 border-2 border-slate-700/60 hover:border-cyan-400/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[0_8px_40px_0_rgba(14,165,233,0.25)] group">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-80 group-hover:opacity-100 transition-all duration-300" />
+            <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-slate-400 text-sm font-mono">ACTIVE ALERTS</p>
-                  <p className="text-3xl font-bold text-orange-400">{metrics.activeAlerts}</p>
+                  <p className="text-slate-300 text-sm font-mono" title="Number of active system alerts">ACTIVE ALERTS</p>
+                  <p className="text-3xl font-extrabold text-orange-300 drop-shadow-lg">{metrics.activeAlerts}</p>
                 </div>
-                <AlertTriangle className="w-8 h-8 text-orange-400" />
+                <AlertTriangle className="w-10 h-10 text-orange-300 animate-pulse group-hover:scale-110 transition-transform duration-300" />
               </div>
             </CardContent>
           </Card>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {services.map((service) => (
             <Link
               key={service.id}
               to={service.path}
-              className={`classified-card p-6 cursor-pointer transition-all duration-500 group hover:scale-105 futuristic-glow`}
+              className={`group relative overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/80 via-slate-900/80 to-slate-800/90 border-2 border-slate-700/60 hover:border-cyan-400/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[0_8px_40px_0_rgba(14,165,233,0.25)]`}
+              style={{backdropFilter: 'blur(18px)'}}
               onMouseEnter={() => setSelectedService(service.id)}
               onMouseLeave={() => setSelectedService(null)}
             >
+              {/* Luxury Accent Bar */}
+              <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-80 group-hover:opacity-100 transition-all duration-300`} />
+
               {/* Service Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getColorClasses(service.color)} flex items-center justify-center`}>
+              <div className="flex items-center justify-between mb-6 mt-6 px-6">
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${getColorClasses(service.color)} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                   {service.icon}
                 </div>
                 <Badge 
                   variant="outline" 
-                  className={`font-mono text-xs ${getStatusColor(service.status)} border-current`}
+                  className={`font-mono text-xs ${getStatusColor(service.status)} border-current bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full shadow-md`}
                 >
                   {service.status.toUpperCase()}
                 </Badge>
               </div>
 
               {/* Service Info */}
-              <div className="mb-4">
-                <h3 className="classified-text text-lg font-bold mb-2 text-gray-800">
+              <div className="mb-6 px-6">
+                <h3 className="text-2xl font-extrabold text-white mb-1 tracking-tight drop-shadow-lg">
                   {service.name}
                 </h3>
-                <p className="monospace-text text-sm text-gray-600 mb-3">
+                <p className="text-cyan-200 text-base font-mono mb-2 opacity-90">
                   {service.description}
                 </p>
               </div>
 
               {/* Performance Metrics */}
-              <div className="space-y-3">
+              <div className="space-y-4 px-6">
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-slate-400 text-xs font-mono">Performance</span>
-                    <span className="text-white text-xs font-mono">{service.performance.toFixed(1)}%</span>
+                    <span className="text-slate-300 text-xs font-mono">Performance</span>
+                    <span className="text-cyan-300 text-xs font-mono font-bold">{service.performance.toFixed(1)}%</span>
                   </div>
-                  <Progress value={service.performance} className="h-1" />
+                  <Progress value={service.performance} className="h-2 bg-slate-700/60 rounded-full" />
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-center">
-                  <div className="bg-slate-700/30 rounded p-2">
-                    <p className="text-blue-400 text-sm font-bold font-mono">{service.users.toLocaleString()}</p>
-                    <p className="text-slate-400 text-xs font-mono">USERS</p>
+                <div className="grid grid-cols-2 gap-3 text-center">
+                  <div className="bg-gradient-to-br from-blue-700/40 to-cyan-700/30 rounded-xl p-3 shadow-inner">
+                    <p className="text-blue-200 text-lg font-extrabold font-mono tracking-wide">{service.users.toLocaleString()}</p>
+                    <p className="text-slate-300 text-xs font-mono">USERS</p>
                   </div>
-                  <div className="bg-slate-700/30 rounded p-2">
-                    <p className="text-green-400 text-sm font-bold font-mono">{service.uptime.toFixed(2)}%</p>
-                    <p className="text-slate-400 text-xs font-mono">UPTIME</p>
+                  <div className="bg-gradient-to-br from-green-700/40 to-emerald-700/30 rounded-xl p-3 shadow-inner">
+                    <p className="text-green-200 text-lg font-extrabold font-mono tracking-wide">{service.uptime.toFixed(2)}%</p>
+                    <p className="text-slate-300 text-xs font-mono">UPTIME</p>
                   </div>
                 </div>
               </div>
 
               {/* Last Update */}
-              <div className="mt-4 pt-3 border-t border-slate-600">
+              <div className="mt-6 pt-4 border-t border-slate-700/60 px-6 pb-6">
                 <p className="text-slate-400 text-xs font-mono">
                   Last Update: {new Date(service.lastUpdate).toLocaleTimeString()}
                 </p>
               </div>
+
+              {/* Luxury Glow Effect */}
+              <div className="pointer-events-none absolute inset-0 rounded-3xl ring-2 ring-cyan-400/10 group-hover:ring-4 group-hover:ring-cyan-400/30 transition-all duration-300" />
             </Link>
           ))}
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/80 via-slate-900/80 to-slate-800/90 border-2 border-slate-700/60 hover:border-cyan-400/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[0_8px_40px_0_rgba(14,165,233,0.25)] group">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-80 group-hover:opacity-100 transition-all duration-300" />
             <CardHeader>
               <CardTitle className="text-white font-mono flex items-center gap-2">
-                <Settings className="w-5 h-5" />
+                <Settings className="w-6 h-6 animate-pulse group-hover:scale-110 transition-transform duration-300" />
                 QUICK ACTIONS
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-mono">
+              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-mono rounded-xl py-4 text-lg shadow-lg transition-all duration-300">
                 SYSTEM HEALTH CHECK
               </Button>
-              <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-mono">
+              <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-mono rounded-xl py-4 text-lg shadow-lg transition-all duration-300">
                 PERFORMANCE OPTIMIZATION
               </Button>
-              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-mono">
+              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-mono rounded-xl py-4 text-lg shadow-lg transition-all duration-300">
                 SECURITY AUDIT
               </Button>
-              <Button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-mono">
+              <Button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-mono rounded-xl py-4 text-lg shadow-lg transition-all duration-300">
                 GENERATE REPORT
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/80 via-slate-900/80 to-slate-800/90 border-2 border-slate-700/60 hover:border-cyan-400/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[0_8px_40px_0_rgba(14,165,233,0.25)] group">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-80 group-hover:opacity-100 transition-all duration-300" />
             <CardHeader>
               <CardTitle className="text-white font-mono flex items-center gap-2">
-                <Monitor className="w-5 h-5" />
+                <Monitor className="w-6 h-6 animate-pulse group-hover:scale-110 transition-transform duration-300" />
                 SYSTEM MONITORING
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="bg-slate-700/50 rounded-lg p-4">
+              <div className="bg-slate-700/50 rounded-xl p-6 shadow-inner">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-white font-mono text-sm">Network Load</span>
-                  <span className="text-blue-400 font-mono text-sm">78%</span>
+                  <span className="text-blue-300 font-mono text-sm">78%</span>
                 </div>
-                <Progress value={78} className="h-2" />
+                <Progress value={78} className="h-2 bg-blue-600/30 rounded-full animate-pulse" />
               </div>
-              
-              <div className="bg-slate-700/50 rounded-lg p-4">
+              <div className="bg-slate-700/50 rounded-xl p-6 shadow-inner">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-white font-mono text-sm">Database Performance</span>
-                  <span className="text-green-400 font-mono text-sm">94%</span>
+                  <span className="text-white font-mono text-sm">CPU Usage</span>
+                  <span className="text-purple-300 font-mono text-sm">62%</span>
                 </div>
-                <Progress value={94} className="h-2" />
+                <Progress value={62} className="h-2 bg-purple-600/30 rounded-full animate-pulse" />
               </div>
-              
-              <div className="bg-slate-700/50 rounded-lg p-4">
+              <div className="bg-slate-700/50 rounded-xl p-6 shadow-inner">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-white font-mono text-sm">Storage Usage</span>
-                  <span className="text-orange-400 font-mono text-sm">67%</span>
+                  <span className="text-white font-mono text-sm">Memory Usage</span>
+                  <span className="text-green-300 font-mono text-sm">54%</span>
                 </div>
-                <Progress value={67} className="h-2" />
+                <Progress value={54} className="h-2 bg-green-600/30 rounded-full animate-pulse" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/80 via-slate-900/80 to-slate-800/90 border-2 border-slate-700/60 hover:border-cyan-400/60 transition-all duration-500 transform hover:scale-105 hover:shadow-[0_8px_40px_0_rgba(14,165,233,0.25)] group">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 opacity-80 group-hover:opacity-100 transition-all duration-300" />
             <CardHeader>
               <CardTitle className="text-white font-mono flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5" />
-                ACTIVE ALERTS
+                <Server className="w-6 h-6 animate-pulse group-hover:scale-110 transition-transform duration-300" />
+                INFRASTRUCTURE
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div className="bg-red-500/20 border border-red-500/30 rounded-lg p-3">
-                  <p className="text-red-400 font-mono text-sm">NovaMind™ - Model Training Required</p>
-                  <p className="text-slate-400 text-xs mt-1">Performance degraded, retraining recommended</p>
+            <CardContent className="space-y-4">
+              <div className="bg-slate-700/50 rounded-xl p-6 shadow-inner">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-white font-mono text-sm">Server Health</span>
+                  <span className="text-cyan-300 font-mono text-sm">99.9%</span>
                 </div>
-                <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3">
-                  <p className="text-yellow-400 font-mono text-sm">NovaSphere™ - High CPU Usage</p>
-                  <p className="text-slate-400 text-xs mt-1">Server load above normal threshold</p>
+                <Progress value={99.9} className="h-2 bg-cyan-600/30 rounded-full animate-pulse" />
+              </div>
+              <div className="bg-slate-700/50 rounded-xl p-6 shadow-inner">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-white font-mono text-sm">Disk Usage</span>
+                  <span className="text-orange-300 font-mono text-sm">41%</span>
                 </div>
+                <Progress value={41} className="h-2 bg-orange-600/30 rounded-full animate-pulse" />
+              </div>
+              <div className="bg-slate-700/50 rounded-xl p-6 shadow-inner">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-white font-mono text-sm">Backup Status</span>
+                  <span className="text-green-300 font-mono text-sm">OK</span>
+                </div>
+                <Progress value={100} className="h-2 bg-green-600/30 rounded-full animate-pulse" />
               </div>
             </CardContent>
           </Card>

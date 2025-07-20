@@ -131,118 +131,121 @@ const NovaVisionDashboard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-x-hidden">
+      {/* Animated Gradient Glow Behind Dashboard */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <div className="w-[98vw] max-w-7xl h-[70vh] rounded-3xl blur-3xl opacity-40 animate-luxury-glow bg-gradient-to-br from-blue-400 via-purple-400 to-green-400" />
+      </div>
       <Navigation />
       
-      <div className="container mx-auto px-4 py-8 pt-32">
+      <div className="container mx-auto px-4 py-8 pt-32 relative z-10">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-10">
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-3 bg-blue-500/20 rounded-lg">
-              <BarChart3 className="w-8 h-8 text-blue-400" />
+            <div className="p-4 bg-gradient-to-br from-blue-400/30 via-purple-400/20 to-green-400/20 rounded-2xl shadow-lg animate-luxury-icon">
+              <BarChart3 className="w-10 h-10 text-blue-300" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-white font-mono">NOVAVISION™ DASHBOARD</h1>
-              <p className="text-slate-400 font-mono">BUSINESS INTELLIGENCE ANALYTICS</p>
+              <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent drop-shadow-lg tracking-tight luxury-title">NOVAVISION™ DASHBOARD</h1>
+              <p className="text-cyan-100 font-mono text-xl opacity-90">BUSINESS INTELLIGENCE ANALYTICS</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <Badge variant="outline" className="border-blue-500 text-blue-400 font-mono">
-              ANALYTICS: ACTIVE
-            </Badge>
-            <Badge variant="outline" className="border-green-500 text-green-400 font-mono">
-              GROWTH: +{metrics.growthRate}%
-            </Badge>
+          <div className="flex items-center gap-4 mt-2">
+            <Badge variant="outline" className="border-blue-400 text-blue-300 font-mono text-lg px-6 py-2 rounded-full shadow-md bg-white/10 backdrop-blur-sm">ANALYTICS: ACTIVE</Badge>
+            <Badge variant="outline" className="border-green-400 text-green-300 font-mono text-lg px-6 py-2 rounded-full shadow-md bg-white/10 backdrop-blur-sm">GROWTH: +{metrics.growthRate}%</Badge>
           </div>
         </div>
 
         {/* Business Metrics Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-            <CardContent className="p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-slate-800/90 border-2 border-blue-400/20 hover:border-blue-400/60 transition-all duration-500 group luxury-cell">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 opacity-80 group-hover:opacity-100 transition-all duration-300 rounded-t-3xl" />
+            <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-slate-400 text-sm font-mono">TOTAL REVENUE</p>
-                  <p className="text-3xl font-bold text-green-400">{formatCurrency(metrics.totalRevenue)}</p>
+                  <p className="text-cyan-100 text-lg font-mono">TOTAL REVENUE</p>
+                  <p className="text-4xl font-extrabold text-green-300 drop-shadow-lg">{formatCurrency(metrics.totalRevenue)}</p>
                 </div>
-                <BarChart3 className="w-8 h-8 text-green-400" />
+                <BarChart3 className="w-10 h-10 text-green-300 animate-luxury-icon" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-            <CardContent className="p-6">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-slate-800/90 border-2 border-blue-400/20 hover:border-blue-400/60 transition-all duration-500 group luxury-cell">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 opacity-80 group-hover:opacity-100 transition-all duration-300 rounded-t-3xl" />
+            <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-slate-400 text-sm font-mono">ACTIVE USERS</p>
-                  <p className="text-3xl font-bold text-blue-400">{metrics.activeUsers.toLocaleString()}</p>
+                  <p className="text-cyan-100 text-lg font-mono">ACTIVE USERS</p>
+                  <p className="text-4xl font-extrabold text-blue-300 drop-shadow-lg">{metrics.activeUsers.toLocaleString()}</p>
                 </div>
-                <Users className="w-8 h-8 text-blue-400" />
+                <Users className="w-10 h-10 text-blue-300 animate-luxury-icon" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-            <CardContent className="p-6">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-slate-800/90 border-2 border-blue-400/20 hover:border-blue-400/60 transition-all duration-500 group luxury-cell">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 opacity-80 group-hover:opacity-100 transition-all duration-300 rounded-t-3xl" />
+            <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-slate-400 text-sm font-mono">CONVERSION RATE</p>
-                  <p className="text-3xl font-bold text-purple-400">{metrics.conversionRate}%</p>
+                  <p className="text-cyan-100 text-lg font-mono">CONVERSION RATE</p>
+                  <p className="text-4xl font-extrabold text-purple-300 drop-shadow-lg">{metrics.conversionRate}%</p>
                 </div>
-                <Target className="w-8 h-8 text-purple-400" />
+                <Target className="w-10 h-10 text-purple-300 animate-luxury-icon" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-            <CardContent className="p-6">
+          <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-slate-800/90 border-2 border-blue-400/20 hover:border-blue-400/60 transition-all duration-500 group luxury-cell">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 opacity-80 group-hover:opacity-100 transition-all duration-300 rounded-t-3xl" />
+            <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-slate-400 text-sm font-mono">SATISFACTION</p>
-                  <p className="text-3xl font-bold text-orange-400">{metrics.customerSatisfaction}%</p>
+                  <p className="text-cyan-100 text-lg font-mono">SATISFACTION</p>
+                  <p className="text-4xl font-extrabold text-orange-300 drop-shadow-lg">{metrics.customerSatisfaction}%</p>
                 </div>
-                <CheckCircle className="w-8 h-8 text-orange-400" />
+                <CheckCircle className="w-10 h-10 text-orange-300 animate-luxury-icon" />
               </div>
             </CardContent>
           </Card>
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Analytics Overview */}
           <div className="lg:col-span-2">
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+            <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-slate-800/90 border-2 border-blue-400/20 hover:border-blue-400/60 transition-all duration-500 group luxury-cell">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 opacity-80 group-hover:opacity-100 transition-all duration-300 rounded-t-3xl" />
               <CardHeader>
-                <CardTitle className="text-white font-mono flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5" />
+                <CardTitle className="text-white font-mono flex items-center gap-2 text-2xl">
+                  <TrendingUp className="w-6 h-6 animate-luxury-icon" />
                   KEY PERFORMANCE INDICATORS
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
                   {analyticsData.map((item) => (
-                    <div key={item.id} className="flex items-center justify-between p-4 bg-slate-700/50 rounded-lg border border-slate-600">
-                      <div className="flex items-center gap-4">
-                        <div className="p-2 rounded-lg bg-blue-500/20">
-                          <BarChart3 className="w-5 h-5 text-blue-400" />
+                    <div key={item.id} className="flex items-center justify-between p-6 bg-slate-700/60 rounded-2xl border-2 border-cyan-400/10 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_32px_0_rgba(34,211,238,0.15)] transition-all duration-300 luxury-cell">
+                      <div className="flex items-center gap-6">
+                        <div className="p-4 rounded-xl bg-blue-500/20 animate-luxury-icon">
+                          <BarChart3 className="w-7 h-7 text-blue-300" />
                         </div>
                         <div>
-                          <p className="text-white font-mono text-sm">{item.metric}</p>
-                          <p className="text-slate-400 text-xs">{item.category.toUpperCase()} • {item.period}</p>
+                          <p className="text-white font-mono text-lg font-bold">{item.metric}</p>
+                          <p className="text-cyan-100 text-base font-mono opacity-90">{item.category.toUpperCase()} • {item.period}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-6">
                         <div className="text-right">
                           <p className="text-white font-mono text-lg">
                             {item.category === 'revenue' ? formatCurrency(item.value) : 
                              item.category === 'users' ? item.value.toLocaleString() :
                              item.value + (item.category === 'performance' || item.category === 'engagement' ? '%' : '')}
                           </p>
-                          <div className="flex items-center gap-1 mt-1">
+                          <div className="flex items-center gap-1 mt-2">
                             {getTrendIcon(item.trend)}
-                            <span className={`text-xs font-mono ${getTrendColor(item.trend)}`}>
-                              {item.change > 0 ? '+' : ''}{item.change}%
-                            </span>
+                            <span className={`text-lg font-mono ${getTrendColor(item.trend)}`}>{item.change > 0 ? '+' : ''}{item.change}%</span>
                           </div>
                         </div>
                       </div>
@@ -255,53 +258,47 @@ const NovaVisionDashboard: React.FC = () => {
 
           {/* Analytics Controls */}
           <div>
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+            <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-slate-800/90 border-2 border-blue-400/20 hover:border-blue-400/60 transition-all duration-500 group luxury-cell">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 opacity-80 group-hover:opacity-100 transition-all duration-300 rounded-t-3xl" />
               <CardHeader>
-                <CardTitle className="text-white font-mono flex items-center gap-2">
-                  <Eye className="w-5 h-5" />
+                <CardTitle className="text-white font-mono flex items-center gap-2 text-2xl">
+                  <PieChart className="w-6 h-6 animate-luxury-icon" />
                   ANALYTICS CONTROLS
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-8">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-400 text-sm font-mono">DATA PROCESSING</span>
-                    <Badge variant="outline" className="border-green-500 text-green-400 text-xs">ACTIVE</Badge>
+                    <span className="text-cyan-100 text-lg font-mono">REPORTING</span>
+                    <Badge variant="outline" className="border-green-400 text-green-300 text-lg px-4 py-1 rounded-full shadow-md bg-white/10 backdrop-blur-sm">ENABLED</Badge>
                   </div>
-                  <Progress value={95} className="h-2" />
+                  <Progress value={100} className="h-3 rounded-full bg-green-400/10" />
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-400 text-sm font-mono">REAL-TIME UPDATES</span>
-                    <Badge variant="outline" className="border-green-500 text-green-400 text-xs">ENABLED</Badge>
+                    <span className="text-cyan-100 text-lg font-mono">DATA QUALITY</span>
+                    <Badge variant="outline" className="border-blue-400 text-blue-300 text-lg px-4 py-1 rounded-full shadow-md bg-white/10 backdrop-blur-sm">HIGH</Badge>
                   </div>
-                  <Progress value={88} className="h-2" />
+                  <Progress value={100} className="h-3 rounded-full bg-blue-400/10" />
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-400 text-sm font-mono">PREDICTIVE MODELS</span>
-                    <Badge variant="outline" className="border-green-500 text-green-400 text-xs">ONLINE</Badge>
+                    <span className="text-cyan-100 text-lg font-mono">MONITORING</span>
+                    <Badge variant="outline" className="border-purple-400 text-purple-300 text-lg px-4 py-1 rounded-full shadow-md bg-white/10 backdrop-blur-sm">ON</Badge>
                   </div>
-                  <Progress value={92} className="h-2" />
+                  <Progress value={100} className="h-3 rounded-full bg-purple-400/10" />
                 </div>
-
-                <Button 
-                  onClick={generateReport}
-                  disabled={isGeneratingReport}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-mono"
-                >
-                  {isGeneratingReport ? 'GENERATING...' : 'GENERATE REPORT'}
-                </Button>
               </CardContent>
             </Card>
 
             {/* Market Insights */}
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm mt-6">
+            <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-slate-800/90 border-2 border-blue-400/20 hover:border-blue-400/60 transition-all duration-500 group luxury-cell mt-6">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 opacity-80 group-hover:opacity-100 transition-all duration-300 rounded-t-3xl" />
               <CardHeader>
-                <CardTitle className="text-white font-mono flex items-center gap-2">
-                  <PieChart className="w-5 h-5" />
+                <CardTitle className="text-white font-mono flex items-center gap-2 text-2xl">
+                  <PieChart className="w-6 h-6 animate-luxury-icon" />
                   MARKET INSIGHTS
                 </CardTitle>
               </CardHeader>
@@ -348,8 +345,31 @@ const NovaVisionDashboard: React.FC = () => {
           </Alert>
         </div>
       </div>
-
       <Footer />
+      {/* Custom Animations & Luxury Styles */}
+      <style>{`
+        @keyframes luxury-glow {
+          0%, 100% { filter: blur(60px) brightness(1.1); opacity: 0.4; }
+          50% { filter: blur(80px) brightness(1.3); opacity: 0.7; }
+        }
+        .animate-luxury-glow {
+          animation: luxury-glow 8s ease-in-out infinite;
+        }
+        .luxury-title {
+          font-family: 'Inter', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+          letter-spacing: 0.01em;
+        }
+        .luxury-cell {
+          box-shadow: 0 2px 24px 0 rgba(34,211,238,0.08), 0 1.5px 8px 0 rgba(59,130,246,0.08);
+        }
+        .animate-luxury-icon {
+          animation: luxury-icon-pulse 2.5s cubic-bezier(0.4,0,0.6,1) infinite;
+        }
+        @keyframes luxury-icon-pulse {
+          0%, 100% { filter: drop-shadow(0 0 0px #0ea5e9); }
+          50% { filter: drop-shadow(0 0 12px #0ea5e9cc); }
+        }
+      `}</style>
     </div>
   );
 };

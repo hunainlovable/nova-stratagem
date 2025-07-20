@@ -1,8 +1,10 @@
 
+import React, { Suspense } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
-import VideoSection from '@/components/VideoSection';
+const VideoSection = React.lazy(() => import('@/components/VideoSection'));
 import Services from '@/components/Services';
+import ServiceTransparencyChart from '@/components/ServiceTransparencyChart';
 import Differentiators from '@/components/Differentiators';
 import Values from '@/components/Values';
 import Contact from '@/components/Contact';
@@ -19,10 +21,13 @@ const Index = () => {
       />
       <Navigation />
       <Hero />
-      <VideoSection />
+      <Suspense fallback={<div className='text-center text-white py-20'>Loading video...</div>}>
+        <VideoSection />
+      </Suspense>
       <div id="services">
         <Services />
       </div>
+      <ServiceTransparencyChart />
       <div id="differentiators">
         <Differentiators />
       </div>

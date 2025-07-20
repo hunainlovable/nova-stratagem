@@ -18,6 +18,7 @@ const CaseStudies = lazy(() => import("./pages/CaseStudies"));
 const Insights = lazy(() => import("./pages/Insights"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const ServerBuilder = lazy(() => import("./pages/ServerBuilder"));
 
 // Lazy load dashboard pages
 const NovaShieldDashboard = lazy(() => import("./pages/dashboards/NovaShieldDashboard"));
@@ -83,6 +84,7 @@ const App = React.memo(() => (
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/insights" element={<Insights />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/server-builder" element={<ServerBuilder />} />
             
             {/* Dashboard Routes */}
             <Route path="/dashboard/novashield" element={<NovaShieldDashboard />} />

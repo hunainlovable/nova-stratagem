@@ -5,7 +5,7 @@ import { Button } from '../../components/ui/button';
 import { Progress } from '../../components/ui/progress';
 import { Alert, AlertDescription } from '../../components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
-import { Activity, Cpu, HardDrive, Wifi, Zap, TrendingUp, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Activity, Cpu, HardDrive, Wifi, Zap, TrendingUp, AlertTriangle, CheckCircle, Settings } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 
@@ -116,62 +116,61 @@ const NovaPulseDashboard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-x-hidden">
+      {/* Animated Gradient Glow Behind Dashboard */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <div className="w-[98vw] max-w-7xl h-[70vh] rounded-3xl blur-3xl opacity-40 animate-luxury-glow bg-gradient-to-br from-blue-400 via-cyan-400 to-purple-600" />
+      </div>
       <Navigation />
       
-      <div className="container mx-auto px-4 py-8 pt-32">
+      <div className="container mx-auto px-4 py-8 pt-32 relative z-10">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-10">
           <div className="flex items-center gap-4 mb-4">
-            <div className="p-3 bg-blue-500/20 rounded-lg">
-              <Activity className="w-8 h-8 text-blue-400" />
+            <div className="p-4 bg-gradient-to-br from-blue-400/30 via-cyan-400/20 to-purple-400/20 rounded-2xl shadow-lg animate-luxury-icon">
+              <Activity className="w-10 h-10 text-blue-300" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-white font-mono">NOVAPULSE™ DASHBOARD</h1>
-              <p className="text-slate-400 font-mono">REAL-TIME PERFORMANCE MONITORING</p>
+              <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg tracking-tight luxury-title">NOVAPULSE™ DASHBOARD</h1>
+              <p className="text-cyan-100 font-mono text-xl opacity-90">REAL-TIME PERFORMANCE MONITORING</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <Badge variant="outline" className="border-blue-500 text-blue-400 font-mono">
-              MONITORING: ACTIVE
-            </Badge>
-            <Badge variant="outline" className="border-green-500 text-green-400 font-mono">
-              SYSTEM: HEALTHY
-            </Badge>
+          <div className="flex items-center gap-4 mt-2">
+            <Badge variant="outline" className="border-blue-400 text-blue-300 font-mono text-lg px-6 py-2 rounded-full shadow-md bg-white/10 backdrop-blur-sm">MONITORING: ACTIVE</Badge>
+            <Badge variant="outline" className="border-green-400 text-green-300 font-mono text-lg px-6 py-2 rounded-full shadow-md bg-white/10 backdrop-blur-sm">SYSTEM: HEALTHY</Badge>
           </div>
         </div>
 
         {/* Performance Metrics Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {Object.entries(systemHealth).map(([key, metric]) => (
-            <Card key={key} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-              <CardContent className="p-6">
+            <Card key={key} className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-slate-800/90 border-2 border-blue-400/20 hover:border-blue-400/60 transition-all duration-500 group luxury-cell">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 opacity-80 group-hover:opacity-100 transition-all duration-300 rounded-t-3xl" />
+              <CardContent className="p-8">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${getStatusBgColor(metric.status)}`}>
-                      {key === 'cpu' && <Cpu className="w-5 h-5" />}
-                      {key === 'memory' && <HardDrive className="w-5 h-5" />}
-                      {key === 'disk' && <HardDrive className="w-5 h-5" />}
-                      {key === 'network' && <Wifi className="w-5 h-5" />}
-                      {key === 'responseTime' && <Activity className="w-5 h-5" />}
-                      {key === 'throughput' && <Zap className="w-5 h-5" />}
+                  <div className="flex items-center gap-4">
+                    <div className={`p-4 rounded-xl ${getStatusBgColor(metric.status)} animate-luxury-icon`}>
+                      {key === 'cpu' && <Cpu className="w-7 h-7" />}
+                      {key === 'memory' && <HardDrive className="w-7 h-7" />}
+                      {key === 'disk' && <HardDrive className="w-7 h-7" />}
+                      {key === 'network' && <Wifi className="w-7 h-7" />}
+                      {key === 'responseTime' && <Activity className="w-7 h-7" />}
+                      {key === 'throughput' && <Zap className="w-7 h-7" />}
                     </div>
                     <div>
-                      <p className="text-slate-400 text-sm font-mono">{metric.name}</p>
-                      <p className={`text-2xl font-bold ${getStatusColor(metric.status)}`}>
-                        {metric.value}{metric.unit}
-                      </p>
+                      <p className="text-cyan-100 text-lg font-mono">{metric.name}</p>
+                      <p className={`text-3xl font-extrabold ${getStatusColor(metric.status)} drop-shadow-lg`}>{metric.value}{metric.unit}</p>
                     </div>
                   </div>
-                  {getTrendIcon(metric.trend)}
+                  <div className="ml-2">{getTrendIcon(metric.trend)}</div>
                 </div>
                 <Progress 
                   value={(metric.value / metric.max) * 100} 
-                  className="h-2"
+                  className="h-3 rounded-full bg-blue-400/10"
                 />
                 <div className="flex items-center justify-between mt-2">
-                  <span className="text-slate-400 text-xs font-mono">0{metric.unit}</span>
-                  <span className="text-slate-400 text-xs font-mono">{metric.max}{metric.unit}</span>
+                  <span className="text-cyan-100 text-xs font-mono">0{metric.unit}</span>
+                  <span className="text-cyan-100 text-xs font-mono">{metric.max}{metric.unit}</span>
                 </div>
               </CardContent>
             </Card>
@@ -179,96 +178,91 @@ const NovaPulseDashboard: React.FC = () => {
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Real-time Performance Chart */}
           <div className="lg:col-span-2">
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+            <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-slate-800/90 border-2 border-blue-400/20 hover:border-blue-400/60 transition-all duration-500 group luxury-cell">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 opacity-80 group-hover:opacity-100 transition-all duration-300 rounded-t-3xl" />
               <CardHeader>
-                <CardTitle className="text-white font-mono flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5" />
+                <CardTitle className="text-white font-mono flex items-center gap-2 text-2xl">
+                  <TrendingUp className="w-6 h-6 animate-luxury-icon" />
                   PERFORMANCE ANALYTICS
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-6">
+                <div className="space-y-8">
                   {/* CPU Performance */}
-                  <div>
+                  <div className="bg-slate-700/60 rounded-2xl p-6 border-2 border-cyan-400/10 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_32px_0_rgba(34,211,238,0.15)] transition-all duration-300 luxury-cell">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-slate-400 text-sm font-mono">CPU PERFORMANCE</span>
+                      <span className="text-cyan-100 text-lg font-mono">CPU PERFORMANCE</span>
                       <Badge 
                         variant="outline" 
-                        className={`text-xs font-mono ${
-                          systemHealth.cpu.status === 'critical' ? 'border-red-500 text-red-400' :
-                          systemHealth.cpu.status === 'warning' ? 'border-yellow-500 text-yellow-400' :
-                          'border-green-500 text-green-400'
+                        className={`text-lg font-mono px-4 py-1 rounded-full shadow-md bg-white/10 backdrop-blur-sm ${
+                          systemHealth.cpu.status === 'critical' ? 'border-red-400 text-red-300' :
+                          systemHealth.cpu.status === 'warning' ? 'border-yellow-400 text-yellow-300' :
+                          'border-green-400 text-green-300'
                         }`}
                       >
                         {systemHealth.cpu.status.toUpperCase()}
                       </Badge>
                     </div>
-                    <div className="bg-slate-700/50 rounded-lg p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-mono">Current Load</span>
-                        <span className="text-blue-400 font-mono">{systemHealth.cpu.value}%</span>
-                      </div>
-                      <div className="flex items-center justify-between mt-2">
-                        <span className="text-slate-400 text-sm font-mono">Cores Active</span>
-                        <span className="text-slate-400 text-sm font-mono">8/16</span>
-                      </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-white font-mono text-lg">Current Load</span>
+                      <span className="text-blue-300 font-mono text-lg">{systemHealth.cpu.value}%</span>
+                    </div>
+                    <div className="flex items-center justify-between mt-2">
+                      <span className="text-cyan-100 text-sm font-mono">Cores Active</span>
+                      <span className="text-cyan-100 text-sm font-mono">8/16</span>
                     </div>
                   </div>
 
                   {/* Memory Performance */}
-                  <div>
+                  <div className="bg-slate-700/60 rounded-2xl p-6 border-2 border-cyan-400/10 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_32px_0_rgba(34,211,238,0.15)] transition-all duration-300 luxury-cell">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-slate-400 text-sm font-mono">MEMORY UTILIZATION</span>
+                      <span className="text-cyan-100 text-lg font-mono">MEMORY UTILIZATION</span>
                       <Badge 
                         variant="outline" 
-                        className={`text-xs font-mono ${
-                          systemHealth.memory.status === 'critical' ? 'border-red-500 text-red-400' :
-                          systemHealth.memory.status === 'warning' ? 'border-yellow-500 text-yellow-400' :
-                          'border-green-500 text-green-400'
+                        className={`text-lg font-mono px-4 py-1 rounded-full shadow-md bg-white/10 backdrop-blur-sm ${
+                          systemHealth.memory.status === 'critical' ? 'border-red-400 text-red-300' :
+                          systemHealth.memory.status === 'warning' ? 'border-yellow-400 text-yellow-300' :
+                          'border-green-400 text-green-300'
                         }`}
                       >
                         {systemHealth.memory.status.toUpperCase()}
                       </Badge>
                     </div>
-                    <div className="bg-slate-700/50 rounded-lg p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-mono">RAM Usage</span>
-                        <span className="text-blue-400 font-mono">{systemHealth.memory.value}%</span>
-                      </div>
-                      <div className="flex items-center justify-between mt-2">
-                        <span className="text-slate-400 text-sm font-mono">Available</span>
-                        <span className="text-slate-400 text-sm font-mono">4.2 GB / 16 GB</span>
-                      </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-white font-mono text-lg">RAM Usage</span>
+                      <span className="text-blue-300 font-mono text-lg">{systemHealth.memory.value}%</span>
+                    </div>
+                    <div className="flex items-center justify-between mt-2">
+                      <span className="text-cyan-100 text-sm font-mono">Available</span>
+                      <span className="text-cyan-100 text-sm font-mono">4.2 GB / 16 GB</span>
                     </div>
                   </div>
 
                   {/* Network Performance */}
-                  <div>
+                  <div className="bg-slate-700/60 rounded-2xl p-6 border-2 border-cyan-400/10 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_32px_0_rgba(34,211,238,0.15)] transition-all duration-300 luxury-cell">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-slate-400 text-sm font-mono">NETWORK PERFORMANCE</span>
+                      <span className="text-cyan-100 text-lg font-mono">NETWORK PERFORMANCE</span>
                       <Badge 
                         variant="outline" 
-                        className={`text-xs font-mono ${
-                          systemHealth.network.status === 'critical' ? 'border-red-500 text-red-400' :
-                          systemHealth.network.status === 'warning' ? 'border-yellow-500 text-yellow-400' :
-                          'border-green-500 text-green-400'
+                        className={`text-lg font-mono px-4 py-1 rounded-full shadow-md bg-white/10 backdrop-blur-sm ${
+                          systemHealth.network.status === 'critical' ? 'border-red-400 text-red-300' :
+                          systemHealth.network.status === 'warning' ? 'border-yellow-400 text-yellow-300' :
+                          'border-green-400 text-green-300'
                         }`}
                       >
                         {systemHealth.network.status.toUpperCase()}
                       </Badge>
                     </div>
-                    <div className="bg-slate-700/50 rounded-lg p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-mono">Bandwidth</span>
-                        <span className="text-blue-400 font-mono">{systemHealth.network.value}%</span>
-                      </div>
-                      <div className="flex items-center justify-between mt-2">
-                        <span className="text-slate-400 text-sm font-mono">Response Time</span>
-                        <span className="text-slate-400 text-sm font-mono">{systemHealth.responseTime.value}ms</span>
-                      </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-white font-mono text-lg">Current Load</span>
+                      <span className="text-blue-300 font-mono text-lg">{systemHealth.network.value}%</span>
+                    </div>
+                    <div className="flex items-center justify-between mt-2">
+                      <span className="text-cyan-100 text-sm font-mono">Bandwidth</span>
+                      <span className="text-cyan-100 text-sm font-mono">1.2 Gbps</span>
                     </div>
                   </div>
                 </div>
@@ -278,62 +272,79 @@ const NovaPulseDashboard: React.FC = () => {
 
           {/* System Controls */}
           <div>
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+            <Card className="relative rounded-3xl shadow-2xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-slate-800/90 border-2 border-blue-400/20 hover:border-blue-400/60 transition-all duration-500 group luxury-cell">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 opacity-80 group-hover:opacity-100 transition-all duration-300 rounded-t-3xl" />
               <CardHeader>
-                <CardTitle className="text-white font-mono flex items-center gap-2">
-                  <Zap className="w-5 h-5" />
+                <CardTitle className="text-white font-mono flex items-center gap-2 text-2xl">
+                  <Settings className="w-6 h-6 animate-luxury-icon" />
                   SYSTEM CONTROLS
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-8">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-400 text-sm font-mono">AUTO-OPTIMIZATION</span>
-                    <Badge variant="outline" className="border-green-500 text-green-400 text-xs">ENABLED</Badge>
+                    <span className="text-cyan-100 text-lg font-mono">OPTIMIZATION</span>
+                    <Badge variant="outline" className="border-green-400 text-green-300 text-lg px-4 py-1 rounded-full shadow-md bg-white/10 backdrop-blur-sm">ENABLED</Badge>
                   </div>
-                  <Progress value={75} className="h-2" />
+                  <Progress value={100} className="h-3 rounded-full bg-green-400/10" />
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-400 text-sm font-mono">LOAD BALANCING</span>
-                    <Badge variant="outline" className="border-green-500 text-green-400 text-xs">ACTIVE</Badge>
+                    <span className="text-cyan-100 text-lg font-mono">MONITORING</span>
+                    <Badge variant="outline" className="border-blue-400 text-blue-300 text-lg px-4 py-1 rounded-full shadow-md bg-white/10 backdrop-blur-sm">ACTIVE</Badge>
                   </div>
-                  <Progress value={90} className="h-2" />
+                  <Progress value={100} className="h-3 rounded-full bg-blue-400/10" />
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-400 text-sm font-mono">CACHE EFFICIENCY</span>
-                    <Badge variant="outline" className="border-green-500 text-green-400 text-xs">OPTIMAL</Badge>
+                    <span className="text-cyan-100 text-lg font-mono">ALERTING</span>
+                    <Badge variant="outline" className="border-purple-400 text-purple-300 text-lg px-4 py-1 rounded-full shadow-md bg-white/10 backdrop-blur-sm">ON</Badge>
                   </div>
-                  <Progress value={88} className="h-2" />
+                  <Progress value={100} className="h-3 rounded-full bg-purple-400/10" />
                 </div>
-
-                <Button 
-                  onClick={startOptimization}
-                  disabled={isOptimizing}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-mono"
-                >
-                  {isOptimizing ? 'OPTIMIZING...' : 'RUN OPTIMIZATION'}
-                </Button>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        {/* Alerts */}
-        <div className="mt-8">
-          <Alert className="bg-slate-800/50 border-slate-700">
-            <Activity className="h-4 w-4" />
-            <AlertDescription className="text-slate-300 font-mono">
-              SYSTEM STATUS: Performance monitoring active. All systems operating within normal parameters.
-            </AlertDescription>
-          </Alert>
+        {/* Optimize Button */}
+        <div className="flex justify-end mt-10">
+          <Button
+            className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 text-white font-extrabold text-lg px-10 py-4 rounded-2xl shadow-xl hover:scale-105 transition-all duration-300"
+            onClick={startOptimization}
+            disabled={isOptimizing}
+          >
+            {isOptimizing ? 'OPTIMIZING...' : 'RUN SYSTEM OPTIMIZATION'}
+          </Button>
         </div>
       </div>
-
       <Footer />
+      {/* Custom Animations & Luxury Styles */}
+      <style>{`
+        @keyframes luxury-glow {
+          0%, 100% { filter: blur(60px) brightness(1.1); opacity: 0.4; }
+          50% { filter: blur(80px) brightness(1.3); opacity: 0.7; }
+        }
+        .animate-luxury-glow {
+          animation: luxury-glow 8s ease-in-out infinite;
+        }
+        .luxury-title {
+          font-family: 'Inter', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+          letter-spacing: 0.01em;
+        }
+        .luxury-cell {
+          box-shadow: 0 2px 24px 0 rgba(34,211,238,0.08), 0 1.5px 8px 0 rgba(59,130,246,0.08);
+        }
+        .animate-luxury-icon {
+          animation: luxury-icon-pulse 2.5s cubic-bezier(0.4,0,0.6,1) infinite;
+        }
+        @keyframes luxury-icon-pulse {
+          0%, 100% { filter: drop-shadow(0 0 0px #0ea5e9); }
+          50% { filter: drop-shadow(0 0 12px #0ea5e9cc); }
+        }
+      `}</style>
     </div>
   );
 };
