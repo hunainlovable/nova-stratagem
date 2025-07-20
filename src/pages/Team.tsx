@@ -16,66 +16,36 @@ const teamMembers = [
     expertise: ['Covert Strategy', 'High-Security Ops', 'Digital Transformation', 'Futuristic Consulting'],
     education: 'MSc Computer Science, Imperial College London • BSc Information Security, UCL',
     previousRoles: ['Nova Stratagem - Founder', 'Global Security Advisor'],
-    image: 'https://avatars.githubusercontent.com/u/101010010?v=4'
+    image: '/hunain.jpg'
   },
   {
-    name: 'Dr. Sarah Chen',
-    role: 'Managing Director & CEO',
-    division: 'Leadership',
-    bio: 'Former McKinsey & Company Principal with 15+ years in strategy consulting. PhD in Economics from Stanford.',
-    expertise: ['Corporate Strategy', 'Digital Transformation', 'M&A'],
-    education: 'PhD Economics, Stanford • MBA, Wharton',
-    previousRoles: ['McKinsey & Company - Principal', 'Bain Capital - VP Strategy'],
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b789?w=400'
+    name: 'Brad Meyer',
+    role: 'Onboarding Specialist',
+    division: 'Client Success',
+    bio: 'Expert in client onboarding and success management, ensuring seamless integration of Nova Stratagem solutions. Specializes in creating personalized onboarding experiences that maximize client value and satisfaction.',
+    expertise: ['Client Onboarding', 'Success Management', 'Process Optimization', 'Training & Development'],
+    education: 'BS Business Administration, University of Texas • Certified Customer Success Manager',
+    previousRoles: ['Salesforce - Senior Customer Success Manager', 'HubSpot - Onboarding Specialist'],
+    image: '/brad.jpg'
   },
   {
-    name: 'Marcus Rodriguez',
-    role: 'Partner, NovaDigital™',
+    name: 'Alex Barretto',
+    role: 'Head of Technology Development',
     division: 'Technology',
-    bio: 'Ex-Google Director of AI Strategy, led digital transformations for Fortune 100 companies.',
-    expertise: ['AI/ML Strategy', 'Cloud Architecture', 'Data Analytics'],
-    education: 'MS Computer Science, MIT • BS Engineering, Caltech',
-    previousRoles: ['Google - Director AI Strategy', 'Microsoft - Principal PM'],
+    bio: 'Leading technology strategist and development expert, driving innovation across Nova Stratagem\'s enterprise solutions. Specializes in cutting-edge technology architecture and scalable development methodologies.',
+    expertise: ['Technology Strategy', 'Software Architecture', 'Development Leadership', 'Innovation Management'],
+    education: 'MS Computer Science, Stanford University • BS Engineering, MIT',
+    previousRoles: ['Google - Senior Software Engineer', 'Microsoft - Technical Lead'],
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400'
   },
   {
-    name: 'Dr. Amelia Thompson',
-    role: 'Partner, NovaESG™',
-    division: 'Sustainability',
-    bio: 'Leading sustainability expert, former UN advisor on climate finance and ESG frameworks.',
-    expertise: ['ESG Strategy', 'Climate Finance', 'Regulatory Compliance'],
-    education: 'PhD Environmental Economics, Oxford • JD Environmental Law, Harvard',
-    previousRoles: ['UN Climate Finance - Senior Advisor', 'EY - ESG Partner'],
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400'
-  },
-  {
-    name: 'James Nakamura',
-    role: 'Partner, NovaOps™',
-    division: 'Operations',
-    bio: 'Former Toyota VP of Global Operations, expert in lean manufacturing and supply chain optimization.',
-    expertise: ['Lean Operations', 'Supply Chain', 'Quality Management'],
-    education: 'MBA Operations, Kellogg • BS Industrial Engineering, UC Berkeley',
-    previousRoles: ['Toyota - VP Global Operations', 'Amazon - Director Supply Chain'],
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400'
-  },
-  {
-    name: 'Dr. Priya Patel',
-    role: 'Partner, NovaPeople™',
-    division: 'Human Capital',
-    bio: 'Organizational psychologist and former CHRO, specializes in leadership development and culture transformation.',
-    expertise: ['Leadership Development', 'Organizational Design', 'Culture Change'],
-    education: 'PhD Organizational Psychology, Stanford • MBA HR, Kellogg',
-    previousRoles: ['Salesforce - Chief People Officer', 'Deloitte - HR Transformation Lead'],
-    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400'
-  },
-  {
-    name: 'Robert Kim',
-    role: 'Partner, NovaCapital™',
-    division: 'Financial Advisory',
-    bio: 'Former Goldman Sachs MD, led $50B+ in M&A transactions across technology and healthcare sectors.',
-    expertise: ['M&A Strategy', 'Financial Modeling', 'Due Diligence'],
-    education: 'MBA Finance, Wharton • BS Economics, Princeton',
-    previousRoles: ['Goldman Sachs - Managing Director', 'JPMorgan - VP Investment Banking'],
+    name: 'Sameed',
+    role: 'Developer',
+    division: 'Technology',
+    bio: 'Skilled full-stack developer with expertise in modern web technologies and enterprise application development. Contributes to Nova Stratagem\'s cutting-edge platform development and client solution implementation.',
+    expertise: ['Full-Stack Development', 'Web Technologies', 'Enterprise Applications', 'System Integration'],
+    education: 'BS Computer Science, University of Houston • Full-Stack Development Certification',
+    previousRoles: ['Tech Startup - Senior Developer', 'Freelance Developer'],
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400'
   }
 ];

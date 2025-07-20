@@ -1,6 +1,7 @@
 
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
+import VideoSection from '@/components/VideoSection';
 import Services from '@/components/Services';
 import Differentiators from '@/components/Differentiators';
 import Values from '@/components/Values';
@@ -18,6 +19,7 @@ const Index = () => {
       />
       <Navigation />
       <Hero />
+      <VideoSection />
       <div id="services">
         <Services />
       </div>
