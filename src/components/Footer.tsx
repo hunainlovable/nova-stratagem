@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
                 </div>
                 <h3 className={`text-2xl font-black ${textColor} classified-header`}>NOVA STRATAGEM</h3>
               </div>
-              <p className={`${secondaryTextColor} leading-relaxed mb-6 monospace-text`}>
+              <p className={`${isDashboardPage ? 'text-white' : 'text-gray-700'} leading-relaxed mb-6 monospace-text`}>
                 Empowering organizations with cutting-edge technology solutions that drive innovation, 
                 enhance security, and create sustainable competitive advantages.
               </p>
