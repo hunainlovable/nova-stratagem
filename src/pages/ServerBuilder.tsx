@@ -137,11 +137,10 @@ const ServerBuilder: React.FC = () => {
 
         {/* Main Container */}
         <div className="w-full max-w-6xl">
-          {/* Progress Stepper */}
           <div className="flex justify-center mb-12">
             <div className="flex items-center space-x-2 bg-black/40 backdrop-blur-xl rounded-2xl p-3 border border-white/10">
               {steps.map((s, i) => (
-                <React.Fragment key={s}>
+                <div key={s} className="flex items-center">
                   <div 
                     className={`
                       relative px-6 py-3 rounded-xl transition-all duration-500 font-mono text-sm font-bold uppercase tracking-wider
@@ -163,7 +162,7 @@ const ServerBuilder: React.FC = () => {
                   {i < steps.length - 1 && (
                     <div className={`w-8 h-0.5 transition-all duration-500 ${i < step ? 'bg-green-400' : 'bg-slate-700'}`} />
                   )}
-                </React.Fragment>
+                </div>
               ))}
             </div>
           </div>
