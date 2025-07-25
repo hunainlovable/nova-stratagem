@@ -20,7 +20,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
+				sans: ['Montserrat', 'sans-serif'],
+				serif: ['Crimson Text', 'serif'],
+				mono: ['JetBrains Mono', 'Consolas', 'Monaco', 'monospace'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
