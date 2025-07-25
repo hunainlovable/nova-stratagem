@@ -28,12 +28,12 @@ const Contact: React.FC = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 rounded-sm bg-red-500/10 border border-red-500/30 mb-6">
             <div className="status-indicator-classified mr-2"></div>
-            <span className="text-red-400 text-xs font-mono tracking-wider uppercase">SECURE COMMUNICATIONS</span>
+            <span className="text-red-400 text-xs font-sans tracking-wider uppercase">SECURE COMMUNICATIONS</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 classified-header">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-serif text-gray-800">
             GET IN TOUCH
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed monospace-text">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-sans">
             READY TO TRANSFORM YOUR OPERATIONS? LET'S DISCUSS HOW OUR SOLUTIONS CAN DRIVE YOUR SUCCESS.
           </p>
         </div>
@@ -42,10 +42,10 @@ const Contact: React.FC = () => {
           {/* Professional Contact Form */}
           <Card className="classified-card border-0">
             <CardHeader>
-              <CardTitle className="text-2xl font-bold text-black classified-header">
+              <CardTitle className="text-2xl font-bold text-black font-serif">
                 SEND US A MESSAGE
               </CardTitle>
-              <CardDescription className="text-gray-600 monospace-text">
+              <CardDescription className="text-gray-600 font-sans">
                 FILL OUT THE FORM BELOW AND WE'LL GET BACK TO YOU WITHIN 24 HOURS.
               </CardDescription>
             </CardHeader>

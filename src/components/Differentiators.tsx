@@ -112,12 +112,12 @@ const Differentiators: React.FC = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 rounded-md bg-red-500/10 border border-red-500/30 mb-6">
             <div className="status-indicator-classified mr-2"></div>
-            <span className="text-red-400 text-xs font-mono tracking-wider uppercase">CLASSIFIED CAPABILITIES</span>
+            <span className="text-red-400 text-xs font-sans tracking-wider uppercase">CLASSIFIED CAPABILITIES</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-6 classified-header">
+          <h2 className="text-4xl md:text-5xl font-black mb-6 font-serif text-gray-800">
             WHY CHOOSE NOVA STRATAGEM?
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed monospace-text font-bold">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed font-sans font-bold">
             WE COMBINE CUTTING-EDGE TECHNOLOGY WITH PROVEN METHODOLOGIES TO DELIVER 
             EXCEPTIONAL RESULTS THAT SET US APART FROM THE COMPETITION.
           </p>
@@ -140,7 +140,7 @@ const Differentiators: React.FC = () => {
                   <div className={`${getBadgeClass(item.type)} mx-auto mb-2`}>
                     {item.clearanceLevel}
                   </div>
-                  <CardTitle className="text-lg font-black text-black group-hover:text-gray-700 transition-colors duration-300 classified-text">
+                  <CardTitle className="text-lg font-black text-black group-hover:text-gray-700 transition-colors duration-300 font-sans uppercase tracking-wide">
                     {item.title}
                   </CardTitle>
                 </CardHeader>
