@@ -151,15 +151,15 @@ const Services: React.FC = () => {
             <span className="clearance-badge-security">GLOBAL SCALE</span>
           </div>
           
-          <h2 className="classified-header text-5xl md:text-6xl font-black mb-6">
+          <h2 className="font-serif text-5xl md:text-6xl font-black mb-6 text-white">
             NOVA SERVICES
           </h2>
           
-          <p className="electric-text text-xl md:text-2xl font-bold mb-8 max-w-4xl mx-auto">
+          <p className="font-serif text-xl md:text-2xl font-bold mb-8 max-w-4xl mx-auto text-white">
             Revolutionary Solutions That Illuminate Your Path to Success
           </p>
           
-          <p className="monospace-text text-lg text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-sans text-lg text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
             Harness the power of cutting-edge technology with our comprehensive suite of enterprise solutions. 
             Each service is designed to nurture growth, foster innovation, and create lasting value.
           </p>
@@ -188,10 +188,10 @@ const Services: React.FC = () => {
                   <span className={`${getBadgeClass(service.color)} mb-3 inline-block`}>
                     {service.color.toUpperCase()}
                   </span>
-                  <h3 className="classified-text text-xl font-bold mb-2 text-gray-800">
+                  <h3 className="font-serif text-xl font-bold mb-2 text-gray-800">
                     {service.title}
                   </h3>
-                  <p className="monospace-text text-sm text-gray-600 mb-4">
+                  <p className="font-sans text-sm text-gray-600 mb-4">
                     {service.subtitle}
                   </p>
                 </div>

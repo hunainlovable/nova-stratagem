@@ -43,10 +43,10 @@ const Navigation: React.FC = () => {
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
             </div>
             <div className="flex flex-col">
-              <span className="classified-text text-lg font-black text-gray-800 group-hover:text-blue-600 transition-colors">
+              <span className="font-serif text-lg font-black text-gray-800 group-hover:text-blue-600 transition-colors">
                 NOVA
               </span>
-              <span className="monospace-text text-xs text-gray-600 -mt-1">
+              <span className="font-sans text-xs text-gray-600 -mt-1">
                 STRATAGEM
               </span>
             </div>
@@ -58,7 +58,7 @@ const Navigation: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`classified-text text-sm font-bold transition-all duration-300 relative group ${
+                className={`font-sans text-sm font-bold transition-all duration-300 relative group ${
                   location.pathname === item.path 
                     ? 'text-blue-600' 
                     : 'text-gray-700 hover:text-blue-600'

@@ -147,7 +147,7 @@ const Hero: React.FC = () => {
           </div>
           
           <motion.h1 
-            className="classified-header text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-none tracking-tight" 
+            className="font-serif text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-none tracking-tight text-white" 
             style={{
               transform: `translateY(${scrollY * 0.05}px)`,
               textShadow: `0 0 30px rgba(59, 130, 246, 0.2)`
@@ -168,7 +168,7 @@ const Hero: React.FC = () => {
           </motion.h1>
           
           <motion.p 
-            className="electric-text text-2xl md:text-3xl lg:text-4xl font-bold mb-8 max-w-4xl mx-auto leading-tight" 
+            className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold mb-8 max-w-4xl mx-auto leading-tight text-white" 
             style={{
               transform: `translateY(${scrollY * 0.03}px)`,
               textShadow: `0 0 20px rgba(59, 130, 246, 0.3)`
@@ -181,7 +181,7 @@ const Hero: React.FC = () => {
           </motion.p>
           
           <motion.p 
-            className="monospace-text text-lg md:text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed" 
+            className="font-sans text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed" 
             style={{
               transform: `translateY(${scrollY * 0.02}px)`
             }}
@@ -252,17 +252,17 @@ const Hero: React.FC = () => {
                   <div className="w-8 h-8 bg-white rounded-lg opacity-90"></div>
                 </div>
                 
-                <h3 className="classified-text text-lg font-bold mb-2 text-gray-800">
+                <h3 className="font-serif text-lg font-bold mb-2 text-gray-800">
                   {tile.title}
                 </h3>
                 
-                <p className="monospace-text text-xs text-gray-600 mb-4">
+                <p className="font-sans text-xs text-gray-600 mb-4">
                   {tile.subtitle}
                 </p>
                 
                 <div className="flex justify-center space-x-2">
                   <div className="status-indicator-classified"></div>
-                  <span className="text-xs text-gray-500 monospace-text font-bold">READY</span>
+                  <span className="text-xs text-gray-500 font-sans font-bold">READY</span>
                 </div>
               </div>
             </Link>
