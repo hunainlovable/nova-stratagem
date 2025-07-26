@@ -20,9 +20,11 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Montserrat', 'sans-serif'],
-				serif: ['Crimson Text', 'serif'],
-				mono: ['JetBrains Mono', 'Consolas', 'Monaco', 'monospace'],
+				sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+				serif: ['Playfair Display', 'Times New Roman', 'serif'],
+				mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
+				inter: ['Inter', 'Helvetica Neue', 'sans-serif'],
+				playfair: ['Playfair Display', 'Times New Roman', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

@@ -147,10 +147,10 @@ const Hero: React.FC = () => {
           </div>
           
           <motion.h1 
-            className="font-serif text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-none tracking-tight text-white" 
+            className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-none tracking-tight text-white" 
             style={{
               transform: `translateY(${scrollY * 0.05}px)`,
-              textShadow: `0 0 30px rgba(59, 130, 246, 0.2)`
+              textShadow: `0 2px 4px rgba(0, 0, 0, 0.3)`
             }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -168,10 +168,10 @@ const Hero: React.FC = () => {
           </motion.h1>
           
           <motion.p 
-            className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold mb-8 max-w-4xl mx-auto leading-tight text-white" 
+            className="font-playfair text-2xl md:text-3xl lg:text-4xl font-medium mb-8 max-w-4xl mx-auto leading-tight text-white/90" 
             style={{
               transform: `translateY(${scrollY * 0.03}px)`,
-              textShadow: `0 0 20px rgba(59, 130, 246, 0.3)`
+              textShadow: `0 1px 3px rgba(0, 0, 0, 0.3)`
             }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -181,7 +181,7 @@ const Hero: React.FC = () => {
           </motion.p>
           
           <motion.p 
-            className="font-sans text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed" 
+            className="font-inter text-lg md:text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed" 
             style={{
               transform: `translateY(${scrollY * 0.02}px)`
             }}
@@ -252,17 +252,17 @@ const Hero: React.FC = () => {
                   <div className="w-8 h-8 bg-white rounded-lg opacity-90"></div>
                 </div>
                 
-                <h3 className="font-serif text-lg font-bold mb-2 text-gray-800">
+                <h3 className="font-playfair text-lg font-semibold mb-2 text-gray-800">
                   {tile.title}
                 </h3>
                 
-                <p className="font-sans text-xs text-gray-600 mb-4">
+                <p className="font-inter text-xs text-gray-600 mb-4">
                   {tile.subtitle}
                 </p>
                 
                 <div className="flex justify-center space-x-2">
                   <div className="status-indicator-classified"></div>
-                  <span className="text-xs text-gray-500 font-sans font-bold">READY</span>
+                  <span className="text-xs text-gray-500 font-inter font-medium">READY</span>
                 </div>
               </div>
             </Link>
@@ -291,17 +291,17 @@ const Hero: React.FC = () => {
         >
           <div className="flex items-center space-x-3">
             <div className="status-indicator-classified"></div>
-            <span className="classified-text text-sm text-gray-700 font-bold whitespace-nowrap">SYSTEM ACTIVE</span>
+            <span className="font-inter text-sm text-gray-700 font-semibold whitespace-nowrap">SYSTEM ACTIVE</span>
           </div>
           <div className="w-px h-6 bg-gray-300 flex-shrink-0"></div>
           <div className="flex items-center space-x-3">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse flex-shrink-0"></div>
-            <span className="classified-text text-sm text-gray-700 font-bold whitespace-nowrap">ALL SYSTEMS NOMINAL</span>
+            <span className="font-inter text-sm text-gray-700 font-semibold whitespace-nowrap">ALL SYSTEMS NOMINAL</span>
           </div>
           <div className="w-px h-6 bg-gray-300 flex-shrink-0"></div>
           <div className="flex items-center space-x-3">
             <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse flex-shrink-0" style={{ animationDelay: '0.5s' }}></div>
-            <span className="classified-text text-sm text-gray-700 font-bold whitespace-nowrap">ENTERPRISE READY</span>
+            <span className="font-inter text-sm text-gray-700 font-semibold whitespace-nowrap">ENTERPRISE READY</span>
           </div>
         </motion.div>
       </div>
@@ -318,7 +318,7 @@ const Hero: React.FC = () => {
         transition={{ delay: 0.6 }}
       >
         <div className="flex flex-col items-center space-y-1">
-          <span className="classified-text text-xs text-gray-500 font-bold tracking-wider group-hover:text-blue-600 transition">EXPLORE</span>
+          <span className="font-inter text-xs text-gray-500 font-medium tracking-wider group-hover:text-blue-600 transition">EXPLORE</span>
           <div className="w-0.5 h-10 bg-gradient-to-b from-blue-600 to-transparent animate-pulse"></div>
         </div>
       </motion.button>
